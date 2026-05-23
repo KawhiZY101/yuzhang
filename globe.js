@@ -24,6 +24,10 @@ const stops = [
 ];
 
 if (canvas && stage) {
+  const prefersStatic = window.matchMedia("(max-width: 720px), (prefers-reduced-motion: reduce)").matches;
+  if (prefersStatic) {
+    stage.classList.add("is-static");
+  } else {
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 
@@ -220,6 +224,7 @@ if (canvas && stage) {
   window.addEventListener("resize", resize);
   resize();
   animate();
+  }
 }
 
 function latLonToVector(lat, lon, radius) {

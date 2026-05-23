@@ -25,6 +25,7 @@ const publications = [
     year: 2023,
     venue: "IEEE Transactions on Industrial Electronics, 2023",
     title: "Distributed Predefined-Time Control for Hybrid AC/DC Microgrid",
+    selected: true,
     link: "https://doi.org/10.1109/TIE.2022.3225807",
     citations: 17,
   },
@@ -34,6 +35,7 @@ const publications = [
     year: 2024,
     venue: "IEEE Transactions on Power Systems, 2024",
     title: "Distributed Predefined-Time Optimization and Control for Multi-Bus DC Microgrid",
+    selected: true,
     link: "https://doi.org/10.1109/TPWRS.2023.3349165",
     citations: 57,
   },
@@ -43,6 +45,7 @@ const publications = [
     year: 2024,
     venue: "Automatica, 2024",
     title: "Distributed Predefined-Time Optimal Economic Dispatch for Microgrids",
+    selected: true,
     link: "https://doi.org/10.1016/j.automatica.2024.111870",
     citations: 15,
   },
@@ -68,6 +71,7 @@ const publications = [
     year: 2026,
     venue: "IEEE Transactions on Industry Applications, 2026",
     title: "From Single to Networked: Practical Predefined-Time Resilient Control of DC Microgrids under DoS and FDI Attacks",
+    selected: true,
     link: "https://doi.org/10.1109/TIA.2025.3619026",
     citations: 2,
   },
@@ -137,6 +141,33 @@ const publications = [
     note: "Accepted",
   },
 ];
+
+const selectedWorks = {
+  dispatch: {
+    index: "01",
+    venue: "Automatica, 2024",
+    title: "Distributed Predefined-Time Optimal Economic Dispatch for Microgrids",
+    breakthrough: "Introduces a smooth reconstruction penalty function and a distributed predefined-time dispatch strategy for constrained microgrid economic operation.",
+  },
+  cooperative: {
+    index: "02",
+    venue: "IEEE Transactions on Industrial Electronics, 2023",
+    title: "Distributed Predefined-Time Control for Hybrid AC/DC Microgrid",
+    breakthrough: "Provides a unified error formulation and predefined-time cooperative control framework for voltage, frequency, and power sharing in hybrid AC/DC systems.",
+  },
+  flow: {
+    index: "03",
+    venue: "IEEE Transactions on Power Systems, 2024",
+    title: "Distributed Predefined-Time Optimization and Control for Multi-Bus DC Microgrid",
+    breakthrough: "Connects distributed optimization and practical bus-level control to achieve predefined-time coordination in networked DC microgrids.",
+  },
+  resilience: {
+    index: "04",
+    venue: "IEEE Transactions on Industry Applications, 2026",
+    title: "From Single to Networked: Practical Predefined-Time Resilient Control of DC Microgrids under DoS and FDI Attacks",
+    breakthrough: "Extends predefined-time resilient control from single DC microgrids to networked clusters under denial-of-service and false-data-injection attacks.",
+  },
+};
 
 const honors = [
   {
@@ -272,6 +303,19 @@ function renderPublications(activeFilter = "all") {
       `;
     })
     .join("");
+}
+
+function renderSelectedWork(topic = "dispatch") {
+  const panel = document.querySelector("#selected-work-panel");
+  const work = selectedWorks[topic];
+  if (!panel || !work) return;
+
+  panel.innerHTML = `
+    <span>${work.index} Representative paper</span>
+    <h3>${work.title}</h3>
+    <p class="selected-venue">${work.venue}</p>
+    <p>${work.breakthrough}</p>
+  `;
 }
 
 function renderHonors() {
@@ -421,6 +465,7 @@ document.querySelectorAll(".topic").forEach((topic) => {
   topic.addEventListener("click", () => {
     document.querySelectorAll(".topic").forEach((item) => item.classList.remove("active"));
     topic.classList.add("active");
+    renderSelectedWork(topic.dataset.topic);
   });
 });
 
@@ -443,6 +488,7 @@ document.querySelector(".customizer-toggle").addEventListener("click", () => {
 window.addEventListener("resize", resizeCanvas);
 
 renderPublications();
+renderSelectedWork();
 renderHonors();
 renderConferences();
 applyState();

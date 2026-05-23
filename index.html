@@ -49,9 +49,9 @@
           <h1>Predefined-time optimization and resilient distributed control.</h1>
           <p class="lede">
             Ph.D. researcher at Huazhong University of Science and Technology,
-            currently visiting Nanyang Technological University. My work connects
-            power flow optimization, distributed control, and cyber-resilient
-            operation for networked microgrids.
+            currently visiting Nanyang Technological University.
+            <strong>Actively seeking Postdoctoral opportunities in Control, Optimization, and Energy Systems starting in Fall 2026.</strong>
+            My work connects power flow optimization, distributed control, and cyber-resilient operation for networked microgrids.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#publications">View papers</a>
@@ -68,7 +68,7 @@
             </div>
             <div>
               <dt>17</dt>
-              <dd>Conference stops</dd>
+              <dd>Conference Presentations</dd>
             </div>
           </dl>
         </div>
@@ -136,34 +136,32 @@
       <section class="section-band research-map" id="research">
         <div class="section-heading">
           <p class="eyebrow">Research System</p>
-          <h2>Five connected directions for future energy networks.</h2>
+          <h2>Four connected directions for future energy networks.</h2>
         </div>
-        <div class="research-grid">
-          <article class="topic active" data-topic="dispatch">
-            <span>01</span>
-            <h3>Economic Dispatch</h3>
-            <p>Smooth reconstruction penalty functions and distributed predefined-time dispatch.</p>
-          </article>
-          <article class="topic" data-topic="cooperative">
-            <span>02</span>
-            <h3>Cooperative Control</h3>
-            <p>Voltage, frequency, and global power sharing in hybrid AC/DC microgrids.</p>
-          </article>
-          <article class="topic" data-topic="flow">
-            <span>03</span>
-            <h3>Power Flow Optimization</h3>
-            <p>Multi-objective phase-angle control and voltage-safe load sharing.</p>
-          </article>
-          <article class="topic" data-topic="resilience">
-            <span>04</span>
-            <h3>Resilient Control</h3>
-            <p>DoS and FDI attack compensation for single and networked DC microgrids.</p>
-          </article>
-          <article class="topic" data-topic="learning">
-            <span>05</span>
-            <h3>Reinforcement Learning</h3>
-            <p>Physics-enhanced decision transformer method for hybrid energy storage system management.</p>
-          </article>
+        <div class="research-layout">
+          <div class="research-grid">
+            <article class="topic active" data-topic="dispatch">
+              <span>01</span>
+              <h3>Economic Dispatch</h3>
+              <p>Smooth reconstruction penalty functions and distributed predefined-time dispatch.</p>
+            </article>
+            <article class="topic" data-topic="cooperative">
+              <span>02</span>
+              <h3>Cooperative Control</h3>
+              <p>Voltage, frequency, and global power sharing in hybrid AC/DC microgrids.</p>
+            </article>
+            <article class="topic" data-topic="flow">
+              <span>03</span>
+              <h3>Power Flow Optimization</h3>
+              <p>Multi-objective phase-angle control and voltage-safe load sharing.</p>
+            </article>
+            <article class="topic" data-topic="resilience">
+              <span>04</span>
+              <h3>Resilient Control</h3>
+              <p>DoS and FDI attack compensation for single and networked DC microgrids.</p>
+            </article>
+          </div>
+          <aside class="selected-work-panel" id="selected-work-panel" aria-live="polite"></aside>
         </div>
       </section>
 
@@ -184,6 +182,47 @@
           </div>
         </div>
         <div class="paper-list" id="paper-list" aria-live="polite"></div>
+      </section>
+
+      <section class="section-band pipeline" id="pipeline">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Working Papers</p>
+            <h2>Current research pipeline.</h2>
+            <p class="section-note">
+              I am preparing preprints and working papers targeting high-impact venues, with an emphasis on generalizable learning-based decision systems for energy management.
+            </p>
+          </div>
+        </div>
+        <div class="working-list">
+          <article>
+            <span>Working Paper</span>
+            <h3>Physics-enhanced decision transformer method for hybrid energy storage system management</h3>
+            <p>Positioning physics-informed reinforcement learning as a decision layer for safe, efficient, and transferable hybrid energy storage control.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-band skills" id="skills">
+        <div class="section-heading">
+          <p class="eyebrow">Skills</p>
+          <h2>Theory, code, and hardware-aware research workflow.</h2>
+        </div>
+        <div class="skill-tags" aria-label="Skills and tools">
+          <span>Predefined-time control</span>
+          <span>Distributed optimization</span>
+          <span>Reinforcement learning</span>
+          <span>PPO algorithms</span>
+          <span>Reward scaling design</span>
+          <span>Physics-informed reinforcement learning</span>
+          <span>Decision transformers</span>
+          <span>Python</span>
+          <span>MATLAB / Simulink</span>
+          <span>Power electronics modeling</span>
+          <span>PCB design</span>
+          <span>High-precision industrial controller development</span>
+          <span>Modern research automation workflow</span>
+        </div>
       </section>
 
       <section class="section-band projects" id="projects">
@@ -226,9 +265,10 @@
         <div class="globe-layout">
           <div class="globe-stage">
             <canvas id="conference-globe" aria-label="Animated globe showing attended conference locations"></canvas>
+            <img class="globe-static" src="assets/earth.jpg" alt="Static globe preview for mobile devices" />
             <div class="globe-fallback">
               <strong>Conference map</strong>
-              <span>Interactive globe loads when Three.js is available.</span>
+              <span>Interactive globe loads on larger screens; mobile devices use a lightweight static preview.</span>
             </div>
           </div>
           <div class="conference-panel">
@@ -308,7 +348,7 @@
         ]
       }
     </script>
-    <script src="script.js?v=20260523f"></script>
+    <script src="script.js?v=20260523g"></script>
     <script type="module" src="globe.js?v=20260523e"></script>
   </body>
 </html>
