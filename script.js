@@ -16,6 +16,7 @@ const publications = [
     year: 2022,
     venue: "IEEE Transactions on Industrial Electronics, 2022",
     title: "Predefined-Time Secondary Control for DC Microgrid",
+    selected: true,
     link: "https://doi.org/10.1109/TIE.2021.3128899",
     citations: 49,
   },
@@ -63,6 +64,7 @@ const publications = [
     year: 2026,
     venue: "Automatica, 2026",
     title: "Optimal Phase Angle Control for Interconnected AC Microgrids",
+    selected: true,
     link: "https://doi.org/10.1016/j.automatica.2025.112654",
   },
   {
@@ -145,27 +147,67 @@ const publications = [
 const selectedWorks = {
   dispatch: {
     index: "01",
-    venue: "Automatica, 2024",
-    title: "Distributed Predefined-Time Optimal Economic Dispatch for Microgrids",
-    breakthrough: "Introduces a smooth reconstruction penalty function and a distributed predefined-time dispatch strategy for constrained microgrid economic operation.",
+    label: "Economic Dispatch",
+    papers: [
+      {
+        venue: "Automatica, 2024",
+        title: "Distributed Predefined-Time Optimal Economic Dispatch for Microgrids",
+      },
+    ],
+    points: [
+      "Designs a smooth reconstruction penalty function with continuous and piecewise-linear differential behavior to handle generation power constraints.",
+      "Builds a distributed predefined-time economic dispatch strategy using a time-based function so cost minimization, power balance, transmission loss, and generation limits can be addressed within a user-specified settling time.",
+    ],
   },
   cooperative: {
     index: "02",
-    venue: "IEEE Transactions on Industrial Electronics, 2023",
-    title: "Distributed Predefined-Time Control for Hybrid AC/DC Microgrid",
-    breakthrough: "Provides a unified error formulation and predefined-time cooperative control framework for voltage, frequency, and power sharing in hybrid AC/DC systems.",
+    label: "Cooperative Control",
+    papers: [
+      {
+        venue: "IEEE Transactions on Industrial Electronics, 2023",
+        title: "Distributed Predefined-Time Control for Hybrid AC/DC Microgrid",
+      },
+      {
+        venue: "IEEE Transactions on Industrial Electronics, 2022",
+        title: "Predefined-Time Secondary Control for DC Microgrid",
+      },
+    ],
+    points: [
+      "Develops predefined-time controllers for AC/DC bus voltage and frequency restoration with global power sharing under unknown load power.",
+      "Uses class-K functions, unified error definitions, and predefined-time observers to reduce reliance on direct load measurements while keeping convergence time tunable and overshoot small.",
+    ],
   },
   flow: {
     index: "03",
-    venue: "IEEE Transactions on Power Systems, 2024",
-    title: "Distributed Predefined-Time Optimization and Control for Multi-Bus DC Microgrid",
-    breakthrough: "Connects distributed optimization and practical bus-level control to achieve predefined-time coordination in networked DC microgrids.",
+    label: "Power Flow Optimization",
+    papers: [
+      {
+        venue: "IEEE Transactions on Power Systems, 2024",
+        title: "Distributed Predefined-Time Optimization and Control for Multi-Bus DC Microgrid",
+      },
+      {
+        venue: "Automatica, 2026",
+        title: "Optimal Phase Angle Control for Interconnected AC Microgrids",
+      },
+    ],
+    points: [
+      "Formulates phase-angle-based and penalty-scalarized multi-objective indices to capture trade-offs among power sharing, transmission loss, and voltage safety.",
+      "Combines distributed predefined-time optimization with consensus-based observers so networked AC/DC microgrids can implement global optimal decisions with local information.",
+    ],
   },
   resilience: {
     index: "04",
-    venue: "IEEE Transactions on Industry Applications, 2026",
-    title: "From Single to Networked: Practical Predefined-Time Resilient Control of DC Microgrids under DoS and FDI Attacks",
-    breakthrough: "Extends predefined-time resilient control from single DC microgrids to networked clusters under denial-of-service and false-data-injection attacks.",
+    label: "Resilient Control",
+    papers: [
+      {
+        venue: "IEEE Transactions on Industry Applications, 2026",
+        title: "From Single to Networked: Practical Predefined-Time Resilient Control of DC Microgrids under DoS and FDI Attacks",
+      },
+    ],
+    points: [
+      "Proposes practical predefined-time resilient control for voltage regulation and current sharing under denial-of-service and false-data-injection attacks.",
+      "Introduces switching adaptive compensation for unbounded FDI attacks and analyzes how attacks and control parameters affect regulation error and convergence time in both single and networked microgrids.",
+    ],
   },
 };
 
@@ -291,13 +333,15 @@ function renderPublications(activeFilter = "all") {
       const href = paper.link ? ` href="${paper.link}" target="_blank" rel="noreferrer"` : "";
       return `
         <${tag} class="paper${hidden ? " is-hidden" : ""}${paper.link ? "" : " no-link"}" data-kind="${paper.kind}" data-role="${paper.role}"${href}>
-          <span>${paper.venue}</span>
+          <div class="paper-venue">
+            <span>${paper.venue}</span>
+            ${paper.selected ? "<em>Selected Publication</em>" : ""}
+          </div>
           <h3>${paper.title}</h3>
           <div class="paper-meta">
             <em>${paper.kind === "journal" ? "Journal" : "Conference"}</em>
             <em>${paper.role === "first-author" ? "First author" : paper.role === "corresponding-author" ? "Corresponding author" : "Co-author"}</em>
             ${paper.note && !paper.note.match(/^[JC]\\d+/) && paper.note !== "Completed" ? `<em>${paper.note}</em>` : ""}
-            ${paper.selected ? "<em>Selected Publication</em>" : ""}
             ${typeof paper.citations === "number" ? `<em>${paper.citations} OpenAlex citations</em>` : ""}
           </div>
         </${tag}>
@@ -311,11 +355,27 @@ function renderSelectedWork(topic = "dispatch") {
   const work = selectedWorks[topic];
   if (!panel || !work) return;
 
+  panel.classList.remove("is-switching");
+  void panel.offsetWidth;
+  panel.classList.add("is-switching");
   panel.innerHTML = `
-    <span>${work.index} Representative paper</span>
-    <h3>${work.title}</h3>
-    <p class="selected-venue">${work.venue}</p>
-    <p>${work.breakthrough}</p>
+    <span>${work.index} Representative works</span>
+    <h3>${work.label}</h3>
+    <div class="selected-paper-stack">
+      ${work.papers
+        .map(
+          (paper) => `
+            <article>
+              <strong>${paper.venue}</strong>
+              <p>${paper.title}</p>
+            </article>
+          `,
+        )
+        .join("")}
+    </div>
+    <ul>
+      ${work.points.map((point) => `<li>${point}</li>`).join("")}
+    </ul>
   `;
 }
 

@@ -391,6 +391,11 @@ h3 {
 .topic {
   cursor: pointer;
   min-height: 230px;
+  transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+}
+
+.topic:hover {
+  transform: translateY(-3px);
 }
 
 .topic.active {
@@ -406,6 +411,21 @@ h3 {
   background: var(--panel);
   box-shadow: var(--shadow);
   backdrop-filter: blur(18px);
+}
+
+.selected-work-panel.is-switching {
+  animation: panelFade 0.34s ease both;
+}
+
+@keyframes panelFade {
+  from {
+    opacity: 0.55;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .selected-work-panel span,
@@ -428,6 +448,41 @@ h3 {
 .working-list p {
   color: var(--muted);
   line-height: 1.6;
+}
+
+.selected-work-panel ul {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.selected-paper-stack {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 6px;
+}
+
+.selected-paper-stack article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: color-mix(in srgb, var(--panel-strong) 70%, transparent);
+}
+
+.selected-paper-stack strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--accent);
+  font-size: 0.86rem;
+}
+
+.selected-paper-stack p {
+  margin: 0;
+  color: var(--text);
+  font-weight: 750;
 }
 
 .selected-venue {
@@ -512,9 +567,29 @@ h3 {
   align-items: center;
 }
 
-.paper > span {
+.paper-venue {
   align-self: center;
+  display: grid;
+  gap: 8px;
+}
+
+.paper-venue span {
   margin-bottom: 0;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.paper-venue em {
+  width: fit-content;
+  border: 1px solid color-mix(in srgb, var(--accent) 46%, var(--line));
+  border-radius: 999px;
+  padding: 5px 8px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--text);
+  font-size: 0.74rem;
+  font-style: normal;
+  font-weight: 800;
 }
 
 .paper h3 {
@@ -599,6 +674,9 @@ h3 {
   min-height: 620px;
   overflow: hidden;
   border-radius: 8px;
+  background:
+    radial-gradient(circle at 48% 44%, rgba(14, 165, 233, 0.16), transparent 46%),
+    color-mix(in srgb, var(--panel-strong) 86%, white 14%);
 }
 
 #conference-globe {
@@ -634,14 +712,7 @@ h3 {
 }
 
 .globe-fallback {
-  position: absolute;
-  left: 24px;
-  bottom: 24px;
-  display: grid;
-  gap: 8px;
-  max-width: 310px;
-  color: var(--muted);
-  pointer-events: none;
+  display: none;
 }
 
 .globe-fallback strong {
@@ -753,9 +824,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 16px 18px;
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--accent) 14%, transparent), transparent 34%),
-    var(--panel);
+  background: var(--panel);
   box-shadow: var(--shadow);
 }
 

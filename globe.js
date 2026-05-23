@@ -51,10 +51,10 @@ if (canvas && stage) {
     new THREE.MeshPhongMaterial({
       map: texture,
       color: 0xdff7ff,
-      emissive: 0x061516,
+      emissive: 0x263236,
       shininess: 38,
-      transparent: true,
-      opacity: 0.96,
+      transparent: false,
+      opacity: 1,
     }),
   );
   globe.add(sphere);
@@ -66,7 +66,7 @@ if (canvas && stage) {
         color: 0x2dd4bf,
         wireframe: true,
         transparent: true,
-        opacity: 0.14,
+        opacity: 0.08,
       }),
     ),
   );
@@ -77,7 +77,7 @@ if (canvas && stage) {
       color: 0x2dd4bf,
       side: THREE.BackSide,
       transparent: true,
-      opacity: 0.12,
+      opacity: 0.07,
     }),
   );
   globe.add(atmosphere);
@@ -215,7 +215,7 @@ if (canvas && stage) {
     atmosphere.material.color.copy(color);
 
     if (document.documentElement.dataset.motion !== "off" && !dragging) {
-      globe.rotation.y += 0.0022;
+      globe.rotation.y += 0.0008;
     }
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
