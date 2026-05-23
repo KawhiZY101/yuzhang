@@ -13,6 +13,7 @@ const publications = [
   {
     kind: "journal",
     role: "first-author",
+    year: 2022,
     venue: "IEEE Transactions on Industrial Electronics, 2022",
     title: "Predefined-Time Secondary Control for DC Microgrid",
     link: "https://doi.org/10.1109/TIE.2021.3128899",
@@ -21,6 +22,7 @@ const publications = [
   {
     kind: "journal",
     role: "first-author",
+    year: 2023,
     venue: "IEEE Transactions on Industrial Electronics, 2023",
     title: "Distributed Predefined-Time Control for Hybrid AC/DC Microgrid",
     link: "https://doi.org/10.1109/TIE.2022.3225807",
@@ -29,6 +31,7 @@ const publications = [
   {
     kind: "journal",
     role: "first-author",
+    year: 2024,
     venue: "IEEE Transactions on Power Systems, 2024",
     title: "Distributed Predefined-Time Optimization and Control for Multi-Bus DC Microgrid",
     link: "https://doi.org/10.1109/TPWRS.2023.3349165",
@@ -37,6 +40,7 @@ const publications = [
   {
     kind: "journal",
     role: "first-author",
+    year: 2024,
     venue: "Automatica, 2024",
     title: "Distributed Predefined-Time Optimal Economic Dispatch for Microgrids",
     link: "https://doi.org/10.1016/j.automatica.2024.111870",
@@ -45,6 +49,7 @@ const publications = [
   {
     kind: "journal",
     role: "first-author",
+    year: 2025,
     venue: "IEEE/CAA Journal of Automatica Sinica, 2025",
     title: "Distributed Load-sharing and Loss Optimization within Voltage Safety Constraints for Meshed DC Microgrid",
     link: "https://doi.org/10.1109/JAS.2025.125345",
@@ -52,6 +57,7 @@ const publications = [
   {
     kind: "journal",
     role: "first-author",
+    year: 2026,
     venue: "Automatica, 2026",
     title: "Optimal Phase Angle Control for Interconnected AC Microgrids",
     link: "https://doi.org/10.1016/j.automatica.2025.112654",
@@ -59,6 +65,7 @@ const publications = [
   {
     kind: "journal",
     role: "first-author",
+    year: 2026,
     venue: "IEEE Transactions on Industry Applications, 2026",
     title: "From Single to Networked: Practical Predefined-Time Resilient Control of DC Microgrids under DoS and FDI Attacks",
     link: "https://doi.org/10.1109/TIA.2025.3619026",
@@ -67,6 +74,7 @@ const publications = [
   {
     kind: "journal",
     role: "co-author",
+    year: 2025,
     venue: "IEEE Transactions on Industrial Electronics, 2025",
     title: "Distributed Power Sharing Control for Islanded AC Microgrids With Quantized State",
     link: "https://doi.org/10.1109/TIE.2025.3579083",
@@ -75,6 +83,7 @@ const publications = [
   {
     kind: "journal",
     role: "corresponding-author",
+    year: 2026,
     venue: "IEEE Transactions on Smart Grid, 2026",
     title: "FT-ESO Based Fixed-Time Secondary Control for DC Microgrids with Unknown External Disturbances",
     note: "Accepted",
@@ -82,6 +91,7 @@ const publications = [
   {
     kind: "conference",
     role: "first-author",
+    year: 2023,
     venue: "49th Annual Conference of the IEEE Industrial Electronics Society, 2023",
     title: "Distributed Predefined-Time Secondary Control for AC Microgrid",
     link: "https://scholar.google.com/scholar?q=Distributed+Predefined-Time+Secondary+Control+for+AC+Microgrid",
@@ -89,6 +99,7 @@ const publications = [
   {
     kind: "conference",
     role: "first-author",
+    year: 2024,
     venue: "14th Asian Control Conference, 2024",
     title: "Optimal Voltage Scheduling under Safety Constraints for Multi-bus DC Microgrid",
     link: "https://scholar.google.com/scholar?q=Optimal+Voltage+Scheduling+under+Safety+Constraints+for+Multi-bus+DC+Microgrid",
@@ -96,6 +107,7 @@ const publications = [
   {
     kind: "conference",
     role: "corresponding-author",
+    year: 2024,
     venue: "IEEE Asia-Pacific Power and Energy Engineering Conference, 2024",
     title: "Distributed Event-Triggered Coordinated Voltage-Constrained and Current-Sharing Control for Islanded DC Microgrids",
     link: "https://doi.org/10.1109/APPEEC61255.2024.10922379",
@@ -103,6 +115,7 @@ const publications = [
   {
     kind: "conference",
     role: "co-author",
+    year: 2022,
     venue: "Chinese Control Conference, 2022",
     title: "Slow State Based Consensus for Two Time-Scale Agent Networks under Directed Graphs",
     link: "https://scholar.google.com/scholar?q=Slow+State+Based+Consensus+for+Two+Time-Scale+Agent+Networks+under+Directed+Graphs",
@@ -110,6 +123,7 @@ const publications = [
   {
     kind: "conference",
     role: "co-author",
+    year: 2025,
     venue: "Youth Academic Annual Conference of Chinese Association of Automation, 2025",
     title: "Distributed Event-Triggered Control for Hybrid AC/DC Microgrids with Quantized State",
     link: "https://scholar.google.com/scholar?q=Distributed+Event-Triggered+Control+for+Hybrid+AC%2FDC+Microgrids+with+Quantized+State",
@@ -117,9 +131,98 @@ const publications = [
   {
     kind: "conference",
     role: "first-author",
+    year: 2026,
     venue: "IEEE Power & Energy Society General Meeting, 2026",
     title: "Energy-Like Stability of Interconnected Grid-Forming Inverters with Potential-Sensitive Virtual Inertia",
     note: "Accepted",
+  },
+];
+
+const honors = [
+  {
+    date: "2026.01",
+    project: "HUST Innovation Research Institute Technology Innovation Project",
+    award: "Technology Innovation Project Recognition",
+  },
+  {
+    date: "2025.11",
+    project: "Doctoral Study",
+    award: "National Scholarship for Doctoral Students",
+  },
+  {
+    date: "2025.11",
+    project: "\"Huawei Cup\" Artificial Intelligence Innovation Competition",
+    award: "Competition Award",
+  },
+  {
+    date: "2025.11",
+    project: "Artificial Intelligence Innovation Competition, Qingdao City Round",
+    award: "Competition Award",
+  },
+  {
+    date: "2025.11",
+    project: "Dual-Carbon Innovation and Creativity Competition",
+    award: "Competition Award",
+  },
+  {
+    date: "2025.11",
+    project: "Challenge Cup",
+    award: "2025 Challenge Cup Recognition",
+  },
+  {
+    date: "2025.09",
+    project: "2024 Hubei Association for Science and Technology",
+    award: "Excellent Science and Technology Paper",
+  },
+  {
+    date: "2024.12",
+    project: "Science and Technology Innovation Scholarship",
+    award: "2024 Science and Technology Innovation Scholarship",
+  },
+  {
+    date: "2024.11",
+    project: "Advances in Engineering",
+    award: "Key Scientific Article",
+  },
+  {
+    date: "2024.10",
+    project: "20th National Conference on Complex Networks",
+    award: "Best Student Paper",
+  },
+  {
+    date: "2024.09",
+    project: "2024 IEEE/CAA Journal of Automatica Sinica Industrial Automation 5.0",
+    award: "Certificate",
+  },
+  {
+    date: "2024.08",
+    project: "Huichuan Cup National Intelligent Automation Innovation Competition",
+    award: "National Third Prize",
+  },
+  {
+    date: "2023.12",
+    project: "Zhixing Scholarship",
+    award: "2024 Zhixing Scholarship",
+  },
+  {
+    date: "2023.12",
+    project: "Graduate Study",
+    award: "Merit Graduate Student",
+  },
+  {
+    date: "2022.12",
+    project: "Master's Study",
+    award: "National Scholarship for Master's Students",
+  },
+  {
+    date: "2022.08",
+    project: "34th China Control and Decision Conference",
+    award: "Most Popular Academic Work Award",
+  },
+  {
+    date: "Patent",
+    project: "Authorized invention patent portfolio",
+    award: "Five Chinese invention patents, including ZL202110837323.6.",
   },
 ];
 
@@ -171,8 +274,15 @@ function saveState() {
 function renderPublications(activeFilter = "all") {
   const list = document.querySelector("#paper-list");
   if (!list) return;
+  const roleOrder = {
+    "first-author": 0,
+    "corresponding-author": 1,
+    "co-author": 2,
+  };
 
   list.innerHTML = publications
+    .slice()
+    .sort((a, b) => (roleOrder[a.role] - roleOrder[b.role]) || (b.year - a.year))
     .map((paper) => {
       const hidden =
         activeFilter !== "all" &&
@@ -193,6 +303,23 @@ function renderPublications(activeFilter = "all") {
         </${tag}>
       `;
     })
+    .join("");
+}
+
+function renderHonors() {
+  const list = document.querySelector("#honors-list");
+  if (!list) return;
+
+  list.innerHTML = honors
+    .map(
+      (honor) => `
+        <article class="honor-item">
+          <span>${honor.date}</span>
+          <h3>${honor.project}</h3>
+          <p>${honor.award}</p>
+        </article>
+      `,
+    )
     .join("");
 }
 
@@ -345,6 +472,7 @@ document.querySelector(".customizer-toggle").addEventListener("click", () => {
 window.addEventListener("resize", resizeCanvas);
 
 renderPublications();
+renderHonors();
 renderConferences();
 applyState();
 resizeCanvas();
