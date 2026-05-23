@@ -145,10 +145,14 @@ img {
 
 .nav {
   display: flex;
-  gap: clamp(14px, 3vw, 34px);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px clamp(10px, 1.6vw, 22px);
+  max-width: min(720px, 58vw);
 }
 
 .nav a {
+  white-space: nowrap;
   transition: color 0.2s ease;
 }
 
