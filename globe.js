@@ -41,7 +41,6 @@ if (canvas && stage) {
   scene.add(globe);
 
   const radius = 1.72;
-  const accent = () => getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#2dd4bf";
 
   const texture = new THREE.TextureLoader().load("assets/earth.jpg");
   texture.colorSpace = THREE.SRGBColorSpace;
@@ -50,9 +49,9 @@ if (canvas && stage) {
     new THREE.SphereGeometry(radius, 72, 72),
     new THREE.MeshPhongMaterial({
       map: texture,
-      color: 0xdff7ff,
-      emissive: 0x263236,
-      shininess: 38,
+      color: 0xffffff,
+      emissive: 0x111827,
+      shininess: 30,
       transparent: false,
       opacity: 1,
     }),
@@ -63,10 +62,10 @@ if (canvas && stage) {
     new THREE.Mesh(
       new THREE.SphereGeometry(radius * 1.012, 48, 48),
       new THREE.MeshBasicMaterial({
-        color: 0x2dd4bf,
+        color: 0x3b82f6,
         wireframe: true,
         transparent: true,
-        opacity: 0.08,
+        opacity: 0.055,
       }),
     ),
   );
@@ -74,21 +73,21 @@ if (canvas && stage) {
   const atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(radius * 1.08, 48, 48),
     new THREE.MeshBasicMaterial({
-      color: 0x2dd4bf,
+      color: 0x60a5fa,
       side: THREE.BackSide,
       transparent: true,
-      opacity: 0.07,
+      opacity: 0.055,
     }),
   );
   globe.add(atmosphere);
 
-  const light = new THREE.DirectionalLight(0xffffff, 2.2);
+  const light = new THREE.DirectionalLight(0xffffff, 2.45);
   light.position.set(2.2, 2.8, 4);
   scene.add(light);
-  scene.add(new THREE.AmbientLight(0x9bdad3, 0.75));
+  scene.add(new THREE.AmbientLight(0xe8f1ff, 0.9));
 
   const hub = latLonToVector(30.5928, 114.3055, radius + 0.02);
-  const pointMaterial = new THREE.MeshBasicMaterial({ color: 0x2dd4bf });
+  const pointMaterial = new THREE.MeshBasicMaterial({ color: 0x2563eb });
   const hubMaterial = new THREE.MeshBasicMaterial({ color: 0xf59e0b });
 
   const markers = [];
@@ -113,9 +112,9 @@ if (canvas && stage) {
       new THREE.Line(
         arc,
         new THREE.LineBasicMaterial({
-          color: index === stops.length - 1 ? 0xf59e0b : 0x2dd4bf,
+          color: index === stops.length - 1 ? 0xf59e0b : 0x2563eb,
           transparent: true,
-          opacity: index === stops.length - 1 ? 0.7 : 0.28,
+          opacity: index === stops.length - 1 ? 0.7 : 0.24,
         }),
       ),
     );
@@ -158,7 +157,7 @@ if (canvas && stage) {
   scene.add(
     new THREE.Points(
       starGeometry,
-      new THREE.PointsMaterial({ color: 0x7ddbd4, size: 0.012, transparent: true, opacity: 0.65 }),
+      new THREE.PointsMaterial({ color: 0x64748b, size: 0.012, transparent: true, opacity: 0.42 }),
     ),
   );
 
@@ -210,9 +209,9 @@ if (canvas && stage) {
   }
 
   function animate() {
-    const color = new THREE.Color(accent());
+    const color = new THREE.Color("#2563eb");
     pointMaterial.color.copy(color);
-    atmosphere.material.color.copy(color);
+    atmosphere.material.color.set(0x60a5fa);
 
     if (document.documentElement.dataset.motion !== "off" && !dragging) {
       globe.rotation.y += 0.0008;

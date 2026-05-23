@@ -287,6 +287,13 @@ const conferences = [
   ["2025.11", "Student Academic Annual Conference", "Wuhan"],
 ];
 
+function paperId(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 function applyState() {
   root.style.setProperty("--accent", state.accent);
   root.dataset.theme = state.theme;
@@ -332,7 +339,7 @@ function renderPublications(activeFilter = "all") {
       const tag = paper.link ? "a" : "article";
       const href = paper.link ? ` href="${paper.link}" target="_blank" rel="noreferrer"` : "";
       return `
-        <${tag} class="paper${hidden ? " is-hidden" : ""}${paper.link ? "" : " no-link"}" data-kind="${paper.kind}" data-role="${paper.role}"${href}>
+        <${tag} id="paper-${paperId(paper.title)}" class="paper${hidden ? " is-hidden" : ""}${paper.link ? "" : " no-link"}" data-kind="${paper.kind}" data-role="${paper.role}"${href}>
           <div class="paper-venue">
             <span>${paper.venue}</span>
             ${paper.selected ? "<em>Selected Publication</em>" : ""}
@@ -365,7 +372,7 @@ function renderSelectedWork(topic = "dispatch") {
       ${work.papers
         .map(
           (paper) => `
-            <article>
+            <article class="selected-paper-link" role="button" tabindex="0" data-paper-id="${paperId(paper.title)}" aria-label="Jump to ${paper.title} in publication list">
               <strong>${paper.venue}</strong>
               <p>${paper.title}</p>
             </article>
@@ -377,6 +384,23 @@ function renderSelectedWork(topic = "dispatch") {
       ${work.points.map((point) => `<li>${point}</li>`).join("")}
     </ul>
   `;
+}
+
+function activateAllPublications() {
+  const allFilter = document.querySelector('.filter[data-filter="all"]');
+  document.querySelectorAll(".filter").forEach((item) => item.classList.remove("active"));
+  if (allFilter) allFilter.classList.add("active");
+  renderPublications("all");
+}
+
+function jumpToPublication(id) {
+  activateAllPublications();
+  const paper = document.querySelector(`#paper-${CSS.escape(id)}`);
+  if (!paper) return;
+  document.querySelectorAll(".paper.is-targeted").forEach((item) => item.classList.remove("is-targeted"));
+  paper.classList.add("is-targeted");
+  paper.scrollIntoView({ behavior: "smooth", block: "center" });
+  window.setTimeout(() => paper.classList.remove("is-targeted"), 2200);
 }
 
 function renderHonors() {
@@ -528,6 +552,20 @@ document.querySelectorAll(".topic").forEach((topic) => {
     topic.classList.add("active");
     renderSelectedWork(topic.dataset.topic);
   });
+});
+
+document.querySelector("#selected-work-panel")?.addEventListener("click", (event) => {
+  const paper = event.target.closest(".selected-paper-link");
+  if (!paper) return;
+  jumpToPublication(paper.dataset.paperId);
+});
+
+document.querySelector("#selected-work-panel")?.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  const paper = event.target.closest(".selected-paper-link");
+  if (!paper) return;
+  event.preventDefault();
+  jumpToPublication(paper.dataset.paperId);
 });
 
 document.querySelectorAll(".filter").forEach((filter) => {
