@@ -297,6 +297,7 @@ function renderPublications(activeFilter = "all") {
             <em>${paper.kind === "journal" ? "Journal" : "Conference"}</em>
             <em>${paper.role === "first-author" ? "First author" : paper.role === "corresponding-author" ? "Corresponding author" : "Co-author"}</em>
             ${paper.note && !paper.note.match(/^[JC]\\d+/) && paper.note !== "Completed" ? `<em>${paper.note}</em>` : ""}
+            ${paper.selected ? "<em>Selected Publication</em>" : ""}
             ${typeof paper.citations === "number" ? `<em>${paper.citations} OpenAlex citations</em>` : ""}
           </div>
         </${tag}>
