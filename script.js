@@ -140,44 +140,26 @@ const publications = [
 
 const honors = [
   {
-    date: "2026.01",
-    project: "HUST Innovation Research Institute Technology Innovation Project",
-    award: "Technology Innovation Project Recognition",
-  },
-  {
     date: "2025.11",
     project: "Doctoral Study",
     award: "National Scholarship for Doctoral Students",
   },
   {
-    date: "2025.11",
+    date: "2025.10",
     project: "\"Huawei Cup\" Artificial Intelligence Innovation Competition",
-    award: "Competition Award",
-  },
-  {
-    date: "2025.11",
-    project: "Artificial Intelligence Innovation Competition, Qingdao City Round",
-    award: "Competition Award",
+    award: "Second Prize",
+    title: "AI-model-driven safety warning and health monitoring system for new-energy vehicle power batteries.",
   },
   {
     date: "2025.11",
     project: "Dual-Carbon Innovation and Creativity Competition",
-    award: "Competition Award",
-  },
-  {
-    date: "2025.11",
-    project: "Challenge Cup",
-    award: "2025 Challenge Cup Recognition",
+    award: "Third Prize",
+    title: "Carbon-intelligent interconnection: EV energy-storage multi-scale coordinated optimization and intelligent regulation system for low-carbon power systems.",
   },
   {
     date: "2025.09",
     project: "2024 Hubei Association for Science and Technology",
     award: "Excellent Science and Technology Paper",
-  },
-  {
-    date: "2024.12",
-    project: "Science and Technology Innovation Scholarship",
-    award: "2024 Science and Technology Innovation Scholarship",
   },
   {
     date: "2024.11",
@@ -190,24 +172,10 @@ const honors = [
     award: "Best Student Paper",
   },
   {
-    date: "2024.09",
-    project: "2024 IEEE/CAA Journal of Automatica Sinica Industrial Automation 5.0",
-    award: "Certificate",
-  },
-  {
     date: "2024.08",
     project: "Huichuan Cup National Intelligent Automation Innovation Competition",
     award: "National Third Prize",
-  },
-  {
-    date: "2023.12",
-    project: "Zhixing Scholarship",
-    award: "2024 Zhixing Scholarship",
-  },
-  {
-    date: "2023.12",
-    project: "Graduate Study",
-    award: "Merit Graduate Student",
+    title: "Hybrid microgrid based on predefined-time distributed optimization and control.",
   },
   {
     date: "2022.12",
@@ -315,7 +283,10 @@ function renderHonors() {
       (honor) => `
         <article class="honor-item">
           <span>${honor.date}</span>
-          <h3>${honor.project}</h3>
+          <div>
+            <h3>${honor.project}</h3>
+            ${honor.title ? `<p class="honor-topic">${honor.title}</p>` : ""}
+          </div>
           <p>${honor.award}</p>
         </article>
       `,

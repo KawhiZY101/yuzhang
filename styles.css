@@ -690,6 +690,12 @@ h3 {
   line-height: 1.5;
 }
 
+.honor-topic {
+  margin-top: 6px !important;
+  color: var(--text) !important;
+  font-size: 0.92rem;
+}
+
 .contact {
   display: grid;
   grid-template-columns: 1fr auto;
