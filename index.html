@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-density="balanced" data-motion="on">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Yu Zhang - Ph.D. researcher in predefined-time optimization and distributed control for hybrid AC/DC microgrid clusters."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="keywords"
+      content="Yu Zhang, microgrid control, predefined-time control, distributed optimization, hybrid AC/DC microgrid, power systems"
+    />
+    <meta property="og:title" content="Yu Zhang | Microgrid Control Research" />
+    <meta
+      property="og:description"
+      content="Publications, research, conference trajectory, and CV for Yu Zhang."
+    />
+    <meta property="og:type" content="profile" />
+    <title>Yu Zhang | Microgrid Control Research</title>
+    <link rel="preload" href="../ZhangY.jpg" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="grid-canvas" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Yu Zhang home">
+        <span class="brand-mark">YZ</span>
+        <span class="brand-copy">
+          <strong>Yu Zhang</strong>
+          <span>Control Science &amp; Engineering</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#conferences">Conferences</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-band">
+        <div class="hero-copy">
+          <p class="eyebrow">Hybrid AC/DC Microgrid Clusters</p>
+          <h1>Predefined-time optimization and resilient distributed control.</h1>
+          <p class="lede">
+            Ph.D. researcher at Huazhong University of Science and Technology,
+            currently visiting Nanyang Technological University. My work connects
+            power flow optimization, distributed control, and cyber-resilient
+            operation for networked microgrids.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#publications">View papers</a>
+            <a class="button secondary" href="../resumeZhangY.pdf" target="_blank" rel="noreferrer">Download CV</a>
+          </div>
+          <dl class="metrics" aria-label="Research metrics">
+            <div>
+              <dt>9</dt>
+              <dd>Journal papers</dd>
+            </div>
+            <div>
+              <dt>6</dt>
+              <dd>Conference papers</dd>
+            </div>
+            <div>
+              <dt>17</dt>
+              <dd>Conference stops</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero-visual" aria-label="Portrait and research snapshot">
+          <figure class="portrait-frame">
+            <img src="../ZhangY.jpg" alt="Yu Zhang portrait" />
+          </figure>
+          <div class="signal-panel">
+            <span class="signal-dot"></span>
+            <p>Research focus</p>
+            <strong>Predefined-time control with safety, optimality, and resilience guarantees.</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band timeline" id="experience">
+        <div class="section-heading">
+          <p class="eyebrow">Education</p>
+          <h2>Academic path.</h2>
+        </div>
+        <ol class="timeline-list">
+          <li>
+            <time>2026 - Present</time>
+            <div>
+              <h3>Visiting Scholar/Student</h3>
+              <p>Nanyang Technological University, School of Electrical and Electronic Engineering.</p>
+              <span>Advisors: Prof. Hung Dinh Nguyen and Prof. Changyun Wen</span>
+            </div>
+          </li>
+          <li>
+            <time>Ph.D.</time>
+            <div>
+              <h3>Control Science &amp; Engineering</h3>
+              <p>Huazhong University of Science and Technology, School of Artificial Intelligence and Automation.</p>
+              <span>Advisor: Prof. Yan-Wu Wang</span>
+            </div>
+          </li>
+          <li>
+            <time>2020</time>
+            <div>
+              <h3>B.S. Electrical Engineering</h3>
+              <p>Taiyuan University of Technology, College of Electrical and Power Engineering.</p>
+              <span>Advisor: Prof. Xiao-Ming Chang</span>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section-band research-map" id="research">
+        <div class="section-heading">
+          <p class="eyebrow">Research System</p>
+          <h2>Four connected directions for future energy networks.</h2>
+        </div>
+        <div class="research-grid">
+          <article class="topic active" data-topic="dispatch">
+            <span>01</span>
+            <h3>Economic Dispatch</h3>
+            <p>Smooth reconstruction penalty functions and distributed predefined-time dispatch.</p>
+          </article>
+          <article class="topic" data-topic="cooperative">
+            <span>02</span>
+            <h3>Cooperative Control</h3>
+            <p>Voltage, frequency, and global power sharing in hybrid AC/DC microgrids.</p>
+          </article>
+          <article class="topic" data-topic="flow">
+            <span>03</span>
+            <h3>Power Flow Optimization</h3>
+            <p>Multi-objective phase-angle control and voltage-safe load sharing.</p>
+          </article>
+          <article class="topic" data-topic="resilience">
+            <span>04</span>
+            <h3>Resilient Control</h3>
+            <p>DoS and FDI attack compensation for single and networked DC microgrids.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-band visual-story">
+        <div class="image-strip">
+          <img src="../Graph/MicrogridCluster.jpg" alt="Microgrid cluster example" />
+        </div>
+        <div class="story-copy">
+          <p class="eyebrow">Problem Space</p>
+          <h2>From renewable integration to reliable micro-scale power systems.</h2>
+          <p>
+            My research targets the operational layer of microgrids: fast convergence,
+            constraint handling, networked implementation, and robustness under limited
+            communication or malicious data.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-band publications" id="publications">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Selected Output</p>
+            <h2>Publications.</h2>
+            <p class="section-note">
+              Click any publication to open its DOI page or a Google Scholar search. Citation badges use OpenAlex indexed counts when available.
+            </p>
+          </div>
+          <div class="filters" aria-label="Publication filter">
+            <button class="filter active" type="button" data-filter="all">All</button>
+            <button class="filter" type="button" data-filter="journal">Journal</button>
+            <button class="filter" type="button" data-filter="conference">Conference</button>
+            <button class="filter" type="button" data-filter="first-author">First author</button>
+          </div>
+        </div>
+        <div class="paper-list" id="paper-list" aria-live="polite"></div>
+      </section>
+
+      <section class="section-band conference-globe-section" id="conferences">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Conference Atlas</p>
+            <h2>Academic travel, mapped as a live research orbit.</h2>
+          </div>
+          <div class="globe-stats" aria-label="Conference statistics">
+            <span><strong>17</strong> records</span>
+            <span><strong>13</strong> cities</span>
+            <span><strong>2021-2025</strong></span>
+          </div>
+        </div>
+        <div class="globe-layout">
+          <div class="globe-stage">
+            <canvas id="conference-globe" aria-label="Animated globe showing attended conference locations"></canvas>
+            <div class="globe-fallback">
+              <strong>Conference map</strong>
+              <span>Interactive globe loads when Three.js is available.</span>
+            </div>
+          </div>
+          <div class="conference-panel">
+            <div class="conference-panel-head">
+              <p class="eyebrow">Trajectory</p>
+              <h3>Attended conferences and academic events</h3>
+            </div>
+            <ol class="conference-list" id="conference-list"></ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band projects" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Projects &amp; Honors</p>
+          <h2>Research support and recognition.</h2>
+        </div>
+        <div class="project-grid">
+          <article>
+            <span>Hosted</span>
+            <h3>HUST Innovation Research Institute Technology Innovation Fund</h3>
+            <p>Optimal frequency control strategy of microgrid based on distributed energy storage, 2024.09-2025.09.</p>
+          </article>
+          <article>
+            <span>Hubei Key R&amp;D Program</span>
+            <h3>Coordinated Control and Optimization for Smart Microgrids Based on Energy Storage Clusters</h3>
+            <p>Participated in Hubei Province Technology Innovation Plan Key R&amp;D Project, 2025BAB013, ranked 10th overall and 1st among students, 2025.8-2027.8. Responsible for multi-timescale cooperative control of energy storage under emergency scenarios.</p>
+          </article>
+          <article>
+            <span>NSFC Key Project</span>
+            <h3>Regional Energy Internet</h3>
+            <p>Flow optimization and collaborative control for distributed regional energy networks, 2023.01-2027.12.</p>
+          </article>
+        </div>
+        <div class="award-bar" aria-label="Awards">
+          <span>National Scholarship for Doctoral Students, 2025</span>
+          <span>National Scholarship for Master's Students, 2022</span>
+          <span>Best Student Paper First Prize, 2024</span>
+          <span>Hubei Excellent Science and Technology Paper, 2025</span>
+        </div>
+      </section>
+
+      <section class="section-band contact" id="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Open to postdoctoral research collaborations in control, optimization, and energy systems.</h2>
+        </div>
+        <address>
+          <a href="mailto:N2505927K@e.ntu.edu.sg">N2505927K@e.ntu.edu.sg</a>
+          <a href="mailto:yuzhang_hust@hust.edu.cn">yuzhang_hust@hust.edu.cn</a>
+          <span>Wuhan, China / Singapore</span>
+        </address>
+      </section>
+    </main>
+
+    <aside class="customizer is-collapsed" aria-label="Homepage customization panel">
+      <button class="customizer-toggle" type="button" aria-expanded="false" aria-controls="customizer-panel">
+        <span></span>
+        <span></span>
+      </button>
+      <div class="customizer-panel" id="customizer-panel">
+        <h2>Customize</h2>
+        <label>
+          Accent
+          <input type="color" id="accent-picker" value="#2dd4bf" />
+        </label>
+        <div class="control-group">
+          <span>Theme</span>
+          <button type="button" data-set-theme="dark" class="active">Dark</button>
+          <button type="button" data-set-theme="light">Light</button>
+        </div>
+        <div class="control-group">
+          <span>Density</span>
+          <button type="button" data-set-density="balanced" class="active">Balanced</button>
+          <button type="button" data-set-density="compact">Compact</button>
+        </div>
+        <div class="control-group">
+          <span>Motion</span>
+          <button type="button" data-set-motion="on" class="active">On</button>
+          <button type="button" data-set-motion="off">Off</button>
+        </div>
+      </div>
+    </aside>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yu Zhang",
+        "jobTitle": "Ph.D. researcher",
+        "affiliation": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Huazhong University of Science and Technology"
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Nanyang Technological University"
+          }
+        ],
+        "email": "mailto:N2505927K@e.ntu.edu.sg",
+        "knowsAbout": [
+          "Predefined-time control",
+          "Distributed optimization",
+          "Hybrid AC/DC microgrids",
+          "Power system control"
+        ]
+      }
+    </script>
+    <script src="script.js?v=20260523d"></script>
+    <script type="module" src="globe.js?v=20260523d"></script>
+  </body>
+</html>

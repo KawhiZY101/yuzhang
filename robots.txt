@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://KawhiZY101.github.io/yuzhang/sitemap.xml
