@@ -15,7 +15,6 @@ const publications = [
     role: "first-author",
     venue: "IEEE Transactions on Industrial Electronics, 2022",
     title: "Predefined-Time Secondary Control for DC Microgrid",
-    note: "J01",
     link: "https://doi.org/10.1109/TIE.2021.3128899",
     citations: 49,
   },
@@ -24,7 +23,6 @@ const publications = [
     role: "first-author",
     venue: "IEEE Transactions on Industrial Electronics, 2023",
     title: "Distributed Predefined-Time Control for Hybrid AC/DC Microgrid",
-    note: "J02",
     link: "https://doi.org/10.1109/TIE.2022.3225807",
     citations: 17,
   },
@@ -33,7 +31,6 @@ const publications = [
     role: "first-author",
     venue: "IEEE Transactions on Power Systems, 2024",
     title: "Distributed Predefined-Time Optimization and Control for Multi-Bus DC Microgrid",
-    note: "J03",
     link: "https://doi.org/10.1109/TPWRS.2023.3349165",
     citations: 57,
   },
@@ -42,7 +39,6 @@ const publications = [
     role: "first-author",
     venue: "Automatica, 2024",
     title: "Distributed Predefined-Time Optimal Economic Dispatch for Microgrids",
-    note: "J04",
     link: "https://doi.org/10.1016/j.automatica.2024.111870",
     citations: 15,
   },
@@ -51,7 +47,6 @@ const publications = [
     role: "first-author",
     venue: "IEEE/CAA Journal of Automatica Sinica, 2025",
     title: "Distributed Load-sharing and Loss Optimization within Voltage Safety Constraints for Meshed DC Microgrid",
-    note: "J05",
     link: "https://doi.org/10.1109/JAS.2025.125345",
   },
   {
@@ -59,7 +54,6 @@ const publications = [
     role: "first-author",
     venue: "Automatica, 2026",
     title: "Optimal Phase Angle Control for Interconnected AC Microgrids",
-    note: "J06",
     link: "https://doi.org/10.1016/j.automatica.2025.112654",
   },
   {
@@ -67,7 +61,6 @@ const publications = [
     role: "first-author",
     venue: "IEEE Transactions on Industry Applications, 2026",
     title: "From Single to Networked: Practical Predefined-Time Resilient Control of DC Microgrids under DoS and FDI Attacks",
-    note: "J08",
     link: "https://doi.org/10.1109/TIA.2025.3619026",
     citations: 2,
   },
@@ -76,13 +69,12 @@ const publications = [
     role: "co-author",
     venue: "IEEE Transactions on Industrial Electronics, 2025",
     title: "Distributed Power Sharing Control for Islanded AC Microgrids With Quantized State",
-    note: "Completed",
     link: "https://doi.org/10.1109/TIE.2025.3579083",
     citations: 1,
   },
   {
     kind: "journal",
-    role: "co-author",
+    role: "corresponding-author",
     venue: "IEEE Transactions on Smart Grid, 2026",
     title: "FT-ESO Based Fixed-Time Secondary Control for DC Microgrids with Unknown External Disturbances",
     note: "Accepted",
@@ -92,7 +84,6 @@ const publications = [
     role: "first-author",
     venue: "49th Annual Conference of the IEEE Industrial Electronics Society, 2023",
     title: "Distributed Predefined-Time Secondary Control for AC Microgrid",
-    note: "C01",
     link: "https://scholar.google.com/scholar?q=Distributed+Predefined-Time+Secondary+Control+for+AC+Microgrid",
   },
   {
@@ -100,15 +91,13 @@ const publications = [
     role: "first-author",
     venue: "14th Asian Control Conference, 2024",
     title: "Optimal Voltage Scheduling under Safety Constraints for Multi-bus DC Microgrid",
-    note: "C02",
     link: "https://scholar.google.com/scholar?q=Optimal+Voltage+Scheduling+under+Safety+Constraints+for+Multi-bus+DC+Microgrid",
   },
   {
     kind: "conference",
-    role: "co-author",
+    role: "corresponding-author",
     venue: "IEEE Asia-Pacific Power and Energy Engineering Conference, 2024",
     title: "Distributed Event-Triggered Coordinated Voltage-Constrained and Current-Sharing Control for Islanded DC Microgrids",
-    note: "Completed",
     link: "https://doi.org/10.1109/APPEEC61255.2024.10922379",
   },
   {
@@ -116,7 +105,6 @@ const publications = [
     role: "co-author",
     venue: "Chinese Control Conference, 2022",
     title: "Slow State Based Consensus for Two Time-Scale Agent Networks under Directed Graphs",
-    note: "Completed",
     link: "https://scholar.google.com/scholar?q=Slow+State+Based+Consensus+for+Two+Time-Scale+Agent+Networks+under+Directed+Graphs",
   },
   {
@@ -124,12 +112,11 @@ const publications = [
     role: "co-author",
     venue: "Youth Academic Annual Conference of Chinese Association of Automation, 2025",
     title: "Distributed Event-Triggered Control for Hybrid AC/DC Microgrids with Quantized State",
-    note: "Completed",
     link: "https://scholar.google.com/scholar?q=Distributed+Event-Triggered+Control+for+Hybrid+AC%2FDC+Microgrids+with+Quantized+State",
   },
   {
     kind: "conference",
-    role: "co-author",
+    role: "first-author",
     venue: "IEEE Power & Energy Society General Meeting, 2026",
     title: "Energy-Like Stability of Interconnected Grid-Forming Inverters with Potential-Sensitive Virtual Inertia",
     note: "Accepted",
@@ -137,14 +124,14 @@ const publications = [
 ];
 
 const conferences = [
-  ["2021.05", "Chinese Control and Decision Conference", "Yunnan / Kunming"],
+  ["2021.05", "Chinese Control and Decision Conference", "Kunming"],
   ["2021.07", "Chinese Control Conference", "Shanghai"],
-  ["2021.11", "China Automation Congress", "Yunnan / Kunming"],
+  ["2021.11", "China Automation Congress", "Kunming"],
   ["2022.06", "Chinese Control Conference", "Hefei"],
   ["2022.08", "Chinese Control and Decision Conference", "Hefei"],
   ["2022.10", "Science China Information Sciences Frontier Academic Salon", "Beijing"],
   ["2023.05", "China Systems Science Conference", "Chongqing"],
-  ["2023.06", "Virtual International Conference on Artificial Intelligence", "Virtual"],
+  ["2023.06", "Virtual International Conference on Artificial Intelligence / CIPOSUNI 2023", "Virtual / Universidad Nacional de Ingenieria, Peru"],
   ["2023.07", "Chinese Control Conference", "Tianjin"],
   ["2023.10", "Annual Conference of the IEEE Industrial Electronics Society", "Singapore"],
   ["2024.07", "Asian Control Conference", "Dalian"],
@@ -199,8 +186,8 @@ function renderPublications(activeFilter = "all") {
           <h3>${paper.title}</h3>
           <div class="paper-meta">
             <em>${paper.kind === "journal" ? "Journal" : "Conference"}</em>
-            <em>${paper.role === "first-author" ? "First author" : "Co-author"}</em>
-            <em>${paper.note}</em>
+            <em>${paper.role === "first-author" ? "First author" : paper.role === "corresponding-author" ? "Corresponding author" : "Co-author"}</em>
+            ${paper.note && !paper.note.match(/^[JC]\\d+/) && paper.note !== "Completed" ? `<em>${paper.note}</em>` : ""}
             ${typeof paper.citations === "number" ? `<em>${paper.citations} OpenAlex citations</em>` : ""}
           </div>
         </${tag}>

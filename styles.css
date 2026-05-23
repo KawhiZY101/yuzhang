@@ -355,11 +355,15 @@ h3 {
   gap: 24px;
 }
 
-.research-grid,
 .paper-list,
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 14px;
 }
 
@@ -642,20 +646,41 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.award-bar {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 18px;
+.honors-showcase {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
 }
 
-.award-bar span {
+.honors-showcase article {
   border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 9px 13px;
-  background: color-mix(in srgb, var(--panel) 72%, transparent);
+  border-radius: 8px;
+  padding: 20px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, transparent), transparent 58%),
+    var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.honors-showcase span {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.honors-showcase strong {
+  display: block;
+  font-size: 1.02rem;
+  line-height: 1.25;
+}
+
+.honors-showcase p {
+  margin: 8px 0 0;
   color: var(--muted);
-  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .contact {
@@ -793,7 +818,8 @@ address a:hover {
 
   .research-grid,
   .paper-list,
-  .project-grid {
+  .project-grid,
+  .honors-showcase {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -824,6 +850,7 @@ address a:hover {
   .research-grid,
   .paper-list,
   .project-grid,
+  .honors-showcase,
   .conference-list li {
     grid-template-columns: 1fr;
   }

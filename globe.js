@@ -11,7 +11,7 @@ const stops = [
   { date: "2022.08", name: "Chinese Control and Decision Conference", city: "Hefei", lat: 31.8206, lon: 117.2272 },
   { date: "2022.10", name: "Science China Information Sciences Frontier Academic Salon", city: "Beijing", lat: 39.9042, lon: 116.4074 },
   { date: "2023.05", name: "China Systems Science Conference", city: "Chongqing", lat: 29.563, lon: 106.5516 },
-  { date: "2023.06", name: "Virtual International Conference on Artificial Intelligence", city: "Virtual", lat: 1.3521, lon: 103.8198 },
+  { date: "2023.06", name: "Virtual International Conference on Artificial Intelligence / CIPOSUNI 2023", city: "Virtual / Universidad Nacional de Ingenieria, Peru", lat: -12.024, lon: -77.049 },
   { date: "2023.07", name: "Chinese Control Conference", city: "Tianjin", lat: 39.3434, lon: 117.3616 },
   { date: "2023.10", name: "Annual Conference of the IEEE Industrial Electronics Society", city: "Singapore", lat: 1.3521, lon: 103.8198 },
   { date: "2024.07", name: "Asian Control Conference", city: "Dalian", lat: 38.914, lon: 121.6147 },
