@@ -366,6 +366,17 @@ h3 {
   gap: 24px;
 }
 
+.publications,
+.projects {
+  padding-top: clamp(72px, 7.4vw, 88px);
+  padding-bottom: clamp(72px, 7.4vw, 88px);
+}
+
+.publications .section-heading,
+.projects .section-heading {
+  margin-bottom: 24px;
+}
+
 .paper-list,
 .project-grid {
   display: grid;
@@ -568,6 +579,7 @@ h3 {
 
 .paper-list {
   grid-template-columns: 1fr;
+  gap: 8px;
 }
 
 .paper.is-hidden {
@@ -576,9 +588,10 @@ h3 {
 
 .paper {
   display: grid;
-  grid-template-columns: minmax(210px, 0.28fr) minmax(0, 1fr) auto;
-  gap: 12px;
+  grid-template-columns: minmax(180px, 0.24fr) minmax(0, 1fr) minmax(190px, auto);
+  gap: 10px;
   align-items: center;
+  padding: 14px 16px;
   scroll-margin-top: 120px;
 }
 
@@ -603,7 +616,7 @@ h3 {
 .paper-venue {
   align-self: center;
   display: grid;
-  gap: 8px;
+  gap: 5px;
 }
 
 .paper-venue span {
@@ -617,7 +630,7 @@ h3 {
   width: fit-content;
   border: 1px solid color-mix(in srgb, var(--accent) 46%, var(--line));
   border-radius: 999px;
-  padding: 5px 8px;
+  padding: 3px 7px;
   background: color-mix(in srgb, var(--accent) 12%, transparent);
   color: var(--text);
   font-size: 0.74rem;
@@ -627,7 +640,8 @@ h3 {
 
 .paper h3 {
   margin-bottom: 0;
-  font-size: 1.02rem;
+  font-size: 0.98rem;
+  line-height: 1.22;
 }
 
 .paper:hover h3 {
@@ -645,14 +659,15 @@ h3 {
 .paper-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 4px;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 0;
 }
 
 .paper-meta em {
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 5px 8px;
+  padding: 3px 7px;
   color: var(--muted);
   font-size: 0.76rem;
   font-style: normal;
@@ -840,23 +855,41 @@ h3 {
 
 .project-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.projects .project-grid article {
+  padding: 16px 18px;
+}
+
+.projects .project-grid span {
+  margin-bottom: 12px;
+}
+
+.projects .project-grid h3 {
+  margin-bottom: 8px;
+}
+
+.projects .project-grid p {
+  margin-bottom: 0;
+  line-height: 1.4;
 }
 
 .honors-list {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 10px;
+  margin-top: 14px;
 }
 
 .honor-item {
   display: grid;
-  grid-template-columns: minmax(150px, 0.18fr) minmax(0, 0.54fr) minmax(220px, 0.28fr);
-  gap: 14px;
-  align-items: center;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 5px 12px;
+  align-items: start;
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 16px 18px;
+  padding: 12px 14px;
   background: var(--panel);
   box-shadow: var(--shadow);
 }
@@ -874,9 +907,11 @@ h3 {
 }
 
 .honor-item p {
+  grid-column: 2;
   margin: 0;
   color: var(--muted);
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.35;
 }
 
 .honor-topic {
@@ -1027,7 +1062,7 @@ address a:hover {
   }
 
   .honor-item {
-    grid-template-columns: 1fr;
+    grid-template-columns: 82px minmax(0, 1fr);
     align-items: start;
   }
 
