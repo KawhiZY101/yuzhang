@@ -92,7 +92,7 @@ const publications = [
     year: 2026,
     venue: "IEEE Transactions on Smart Grid, 2026",
     title: "FT-ESO Based Fixed-Time Secondary Control for DC Microgrids with Unknown External Disturbances",
-    note: "Accepted",
+    link: "https://ieeexplore.ieee.org/document/11534902/",
   },
   {
     kind: "conference",
