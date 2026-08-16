@@ -1,15 +1,4 @@
-const root = document.documentElement;
-const canvas = document.querySelector("#grid-canvas");
-const ctx = canvas.getContext("2d");
-const reducedVisuals = window.matchMedia("(max-width: 620px), (prefers-reduced-motion: reduce)");
-let networkFrameId = null;
-const state = {
-  accent: localStorage.getItem("accent") || "#0ea5e9",
-  theme: localStorage.getItem("theme") || "light",
-  density: localStorage.getItem("density") || "balanced",
-  motion: localStorage.getItem("motion") || "on",
-  particles: [],
-};
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const publications = [
   {
@@ -304,6 +293,8 @@ const conferences = [
   ["2026.08", "21st IEEE Conference on Industrial Electronics and Applications (ICIEA 2026) - Best Paper Award in Energy and Environment", "Catania, Italy"],
 ];
 
+let honorsExpanded = false;
+
 const navToggle = document.querySelector(".nav-toggle");
 const primaryNav = document.querySelector("#primary-navigation");
 const desktopNavigation = window.matchMedia("(min-width: 901px)");
@@ -350,32 +341,7 @@ function paperId(title) {
     .replace(/(^-|-$)/g, "");
 }
 
-function applyState() {
-  root.style.setProperty("--accent", state.accent);
-  root.dataset.theme = state.theme;
-  root.dataset.density = state.density;
-  root.dataset.motion = state.motion;
-  document.querySelector("#accent-picker").value = state.accent;
-
-  document.querySelectorAll("[data-set-theme]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.setTheme === state.theme);
-  });
-  document.querySelectorAll("[data-set-density]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.setDensity === state.density);
-  });
-  document.querySelectorAll("[data-set-motion]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.setMotion === state.motion);
-  });
-}
-
-function saveState() {
-  localStorage.setItem("accent", state.accent);
-  localStorage.setItem("theme", state.theme);
-  localStorage.setItem("density", state.density);
-  localStorage.setItem("motion", state.motion);
-}
-
-function renderPublications(activeFilter = "all") {
+function renderPublications(activeFilter = "highlight") {
   const list = document.querySelector("#paper-list");
   if (!list) return;
   const roleOrder = {
@@ -388,10 +354,10 @@ function renderPublications(activeFilter = "all") {
     .slice()
     .sort((a, b) => (roleOrder[a.role] - roleOrder[b.role]) || (b.year - a.year))
     .map((paper) => {
-      const hidden =
-        activeFilter !== "all" &&
-        paper.kind !== activeFilter &&
-        paper.role !== activeFilter;
+      const isHighlight = paper.selected || paper.note?.includes("Best Paper Award");
+      const hidden = activeFilter === "highlight"
+        ? !isHighlight
+        : activeFilter !== "all" && paper.kind !== activeFilter;
       const tag = paper.link ? "a" : "article";
       const href = paper.link ? ` href="${paper.link}" target="_blank" rel="noreferrer"` : "";
       return `
@@ -463,7 +429,7 @@ function renderHonors() {
   const list = document.querySelector("#honors-list");
   if (!list) return;
 
-  list.innerHTML = honors
+  list.innerHTML = (honorsExpanded ? honors : honors.slice(0, 5))
     .map(
       (honor) => `
         <article class="honor-item">
@@ -477,6 +443,14 @@ function renderHonors() {
       `,
     )
     .join("");
+
+  const toggle = document.querySelector(".honors-toggle");
+  if (toggle) {
+    toggle.setAttribute("aria-expanded", String(honorsExpanded));
+    toggle.innerHTML = honorsExpanded
+      ? 'Show less <span aria-hidden="true">↑</span>'
+      : 'View all recognition <span aria-hidden="true">↓</span>';
+  }
 }
 
 function renderConferences() {
@@ -512,113 +486,20 @@ function renderConferences() {
   });
 }
 
-function resizeCanvas() {
-  const ratio = window.devicePixelRatio || 1;
-  canvas.width = Math.floor(window.innerWidth * ratio);
-  canvas.height = Math.floor(window.innerHeight * ratio);
-  canvas.style.width = `${window.innerWidth}px`;
-  canvas.style.height = `${window.innerHeight}px`;
-  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-  createParticles();
-}
-
-function createParticles() {
-  const count = Math.max(34, Math.floor((window.innerWidth * window.innerHeight) / 28000));
-  state.particles = Array.from({ length: count }, () => ({
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
-    vx: (Math.random() - 0.5) * 0.42,
-    vy: (Math.random() - 0.5) * 0.42,
-  }));
-}
-
-function drawNetwork() {
-  networkFrameId = null;
-  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-  if (state.motion === "off" || reducedVisuals.matches) return;
-
-  const color = getComputedStyle(root).getPropertyValue("--accent").trim();
-  ctx.fillStyle = color;
-  ctx.strokeStyle = color;
-
-  state.particles.forEach((point) => {
-    point.x += point.vx;
-    point.y += point.vy;
-
-    if (point.x < 0 || point.x > window.innerWidth) point.vx *= -1;
-    if (point.y < 0 || point.y > window.innerHeight) point.vy *= -1;
-
-    ctx.globalAlpha = 0.72;
-    ctx.beginPath();
-    ctx.arc(point.x, point.y, 1.7, 0, Math.PI * 2);
-    ctx.fill();
-  });
-
-  for (let i = 0; i < state.particles.length; i += 1) {
-    for (let j = i + 1; j < state.particles.length; j += 1) {
-      const a = state.particles[i];
-      const b = state.particles[j];
-      const distance = Math.hypot(a.x - b.x, a.y - b.y);
-      if (distance < 132) {
-        ctx.globalAlpha = (1 - distance / 132) * 0.2;
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.stroke();
-      }
-    }
-  }
-
-  networkFrameId = requestAnimationFrame(drawNetwork);
-}
-
-function syncNetworkAnimation() {
-  resizeCanvas();
-  if (state.motion === "off" || reducedVisuals.matches) {
-    if (networkFrameId !== null) cancelAnimationFrame(networkFrameId);
-    networkFrameId = null;
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    return;
-  }
-  if (networkFrameId === null) networkFrameId = requestAnimationFrame(drawNetwork);
-}
-
-document.querySelector("#accent-picker").addEventListener("input", (event) => {
-  state.accent = event.target.value;
-  applyState();
-  saveState();
-});
-
-document.querySelectorAll("[data-set-theme]").forEach((button) => {
-  button.addEventListener("click", () => {
-    state.theme = button.dataset.setTheme;
-    applyState();
-    saveState();
-  });
-});
-
-document.querySelectorAll("[data-set-density]").forEach((button) => {
-  button.addEventListener("click", () => {
-    state.density = button.dataset.setDensity;
-    applyState();
-    saveState();
-  });
-});
-
-document.querySelectorAll("[data-set-motion]").forEach((button) => {
-  button.addEventListener("click", () => {
-    state.motion = button.dataset.setMotion;
-    applyState();
-    saveState();
-    syncNetworkAnimation();
-  });
-});
-
 document.querySelectorAll(".topic").forEach((topic) => {
   topic.addEventListener("click", () => {
-    document.querySelectorAll(".topic").forEach((item) => item.classList.remove("active"));
+    document.querySelectorAll(".topic").forEach((item) => {
+      item.classList.remove("active");
+      item.setAttribute("aria-pressed", "false");
+    });
     topic.classList.add("active");
+    topic.setAttribute("aria-pressed", "true");
     renderSelectedWork(topic.dataset.topic);
+  });
+  topic.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    topic.click();
   });
 });
 
@@ -645,24 +526,33 @@ document.querySelectorAll(".filter").forEach((filter) => {
   });
 });
 
-document.querySelector(".customizer-toggle").addEventListener("click", () => {
-  const customizer = document.querySelector(".customizer");
-  customizer.classList.toggle("is-collapsed");
-  const expanded = !customizer.classList.contains("is-collapsed");
-  document.querySelector(".customizer-toggle").setAttribute("aria-expanded", String(expanded));
+document.querySelector(".honors-toggle")?.addEventListener("click", () => {
+  honorsExpanded = !honorsExpanded;
+  renderHonors();
 });
-
-window.addEventListener("resize", syncNetworkAnimation);
-
-if (typeof reducedVisuals.addEventListener === "function") {
-  reducedVisuals.addEventListener("change", syncNetworkAnimation);
-} else {
-  reducedVisuals.addListener(syncNetworkAnimation);
-}
 
 renderPublications();
 renderSelectedWork();
 renderHonors();
 renderConferences();
-applyState();
-syncNetworkAnimation();
+
+const revealTargets = document.querySelectorAll(
+  ".section-heading, .timeline-list > li, .visual-story > *, .topic, .selected-work-panel, .working-list article, .skill-tags, .project-grid article, .honors-list, .globe-layout, .contact > *",
+);
+
+if (reducedMotion.matches || !("IntersectionObserver" in window)) {
+  revealTargets.forEach((item) => item.classList.add("is-visible"));
+} else {
+  document.documentElement.classList.add("reveal-ready");
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px -8%", threshold: 0.08 },
+  );
+  revealTargets.forEach((item) => revealObserver.observe(item));
+}

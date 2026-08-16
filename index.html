@@ -20,20 +20,23 @@
     />
     <meta property="og:type" content="profile" />
     <meta property="og:url" content="https://yuzhang-research.com/" />
+    <meta property="og:image" content="https://yuzhang-research.com/assets/og-yu-zhang-2026.png" />
+    <meta property="og:image:width" content="1731" />
+    <meta property="og:image:height" content="909" />
+    <meta property="og:image:alt" content="Yu Zhang — Control for energy systems" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yu Zhang | Microgrid Control Research" />
+    <meta name="twitter:description" content="Control, optimization, and resilient microgrid research." />
+    <meta name="twitter:image" content="https://yuzhang-research.com/assets/og-yu-zhang-2026.png" />
     <title>Yu Zhang | Microgrid Control Research</title>
     <link rel="preload" href="assets/ZhangY.jpg" as="image" />
-    <link rel="stylesheet" href="styles.css?v=20260816" />
+    <link rel="stylesheet" href="styles.css?v=20260816apple" />
   </head>
   <body>
-    <canvas id="grid-canvas" aria-hidden="true"></canvas>
-
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Yu Zhang home">
-        <span class="brand-mark">YZ</span>
-        <span class="brand-copy">
-          <strong>Yu Zhang</strong>
-          <span>Control Science &amp; Engineering</span>
-        </span>
+        <strong>Yu Zhang</strong>
+        <span>Research</span>
       </a>
       <button
         class="nav-toggle"
@@ -47,32 +50,28 @@
         <span aria-hidden="true"></span>
       </button>
       <nav class="nav" id="primary-navigation" aria-label="Primary navigation">
-        <a href="#experience">Path</a>
-        <a href="#problem">Problem</a>
         <a href="#research">Research</a>
-        <a href="#publications">Papers</a>
-        <a href="#pipeline">Pipeline</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Honors</a>
-        <a href="#conferences">Atlas</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Journey</a>
         <a href="#contact">Contact</a>
+        <a class="nav-cta" href="assets/Yu_Zhang_CV_2026.pdf?v=20260816" target="_blank" rel="noreferrer">CV</a>
       </nav>
     </header>
 
     <main id="top">
       <section class="hero section-band">
         <div class="hero-copy">
-          <p class="eyebrow">Hybrid AC/DC Microgrid Clusters</p>
-          <h1>Predefined-time optimization and resilient distributed control.</h1>
+          <p class="availability"><span aria-hidden="true"></span>Open to postdoctoral opportunities · Spring 2027</p>
+          <p class="eyebrow">Control Science · Energy Systems</p>
+          <h1>Control for energy systems. <span>Designed to converge.</span></h1>
           <p class="lede">
-            Ph.D. researcher at Huazhong University of Science and Technology,
-            currently visiting Nanyang Technological University.
-            <strong>Expecting to complete my Ph.D. in late 2026 and actively seeking Postdoctoral opportunities in Control, Optimization, and Energy Systems starting in Spring 2027.</strong>
-            My work connects power flow optimization, distributed control, and cyber-resilient operation for networked microgrids.
+            I develop optimization and distributed control methods for reliable,
+            resilient hybrid AC/DC microgrids. Ph.D. researcher at HUST and
+            visiting researcher at NTU Singapore.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#publications">View papers</a>
-            <a class="button secondary" href="assets/Yu_Zhang_CV_2026.pdf?v=20260816" target="_blank" rel="noreferrer">Download CV</a>
+            <a class="button primary" href="#research">Explore research</a>
+            <a class="button text-button" href="assets/Yu_Zhang_CV_2026.pdf?v=20260816" target="_blank" rel="noreferrer">Download CV <span aria-hidden="true">↗</span></a>
           </div>
           <dl class="metrics" aria-label="Research metrics">
             <div>
@@ -91,13 +90,14 @@
         </div>
 
         <div class="hero-visual" aria-label="Portrait and research snapshot">
+          <div class="portrait-halo" aria-hidden="true"></div>
           <figure class="portrait-frame">
-            <img src="assets/ZhangY.jpg" alt="Yu Zhang portrait" />
+            <img src="assets/ZhangY.jpg" alt="Yu Zhang portrait" fetchpriority="high" />
           </figure>
           <div class="signal-panel">
-            <span class="signal-dot"></span>
             <p>Research focus</p>
-            <strong>Predefined-time control with safety, optimality, and resilience guarantees.</strong>
+            <strong>Fast. Safe. Resilient.</strong>
+            <span>Optimization · Distributed control · AI for energy</span>
           </div>
         </div>
       </section>
@@ -105,7 +105,7 @@
       <section class="section-band timeline" id="experience">
         <div class="section-heading">
           <p class="eyebrow">Education</p>
-          <h2>Academic path.</h2>
+          <h2>Built across power, control, and intelligent systems.</h2>
         </div>
         <ol class="timeline-list">
           <li>
@@ -137,11 +137,11 @@
 
       <section class="section-band visual-story" id="problem">
         <div class="image-strip">
-          <img src="assets/MicrogridCluster.jpg" alt="Microgrid cluster example" />
+          <img src="assets/MicrogridCluster.jpg" alt="Renewable-rich microgrid cluster" loading="lazy" />
         </div>
         <div class="story-copy">
           <p class="eyebrow">Problem Space</p>
-          <h2>From renewable integration to reliable micro-scale power systems.</h2>
+          <h2>Energy systems are becoming distributed. Their control must become smarter.</h2>
           <p>
             My research targets the operational layer of microgrids: fast convergence,
             constraint handling, networked implementation, and robustness under limited
@@ -153,26 +153,26 @@
       <section class="section-band research-map" id="research">
         <div class="section-heading">
           <p class="eyebrow">Research System</p>
-          <h2>Four connected directions for future energy networks.</h2>
+          <h2>Four directions. One connected control stack.</h2>
         </div>
         <div class="research-layout">
           <div class="research-grid">
-            <article class="topic active" data-topic="dispatch">
+            <article class="topic active" data-topic="dispatch" role="button" tabindex="0" aria-pressed="true">
               <span>01</span>
               <h3>Economic Dispatch</h3>
               <p>Smooth reconstruction penalty functions and distributed predefined-time dispatch.</p>
             </article>
-            <article class="topic" data-topic="cooperative">
+            <article class="topic" data-topic="cooperative" role="button" tabindex="0" aria-pressed="false">
               <span>02</span>
               <h3>Cooperative Control</h3>
               <p>Voltage, frequency, and global power sharing in hybrid AC/DC microgrids.</p>
             </article>
-            <article class="topic" data-topic="flow">
+            <article class="topic" data-topic="flow" role="button" tabindex="0" aria-pressed="false">
               <span>03</span>
               <h3>Power Flow Optimization</h3>
               <p>Multi-objective phase-angle control and voltage-safe load sharing.</p>
             </article>
-            <article class="topic" data-topic="resilience">
+            <article class="topic" data-topic="resilience" role="button" tabindex="0" aria-pressed="false">
               <span>04</span>
               <h3>Resilient Control</h3>
               <p>DoS and FDI attack compensation for single and networked DC microgrids.</p>
@@ -186,16 +186,16 @@
         <div class="section-heading split">
           <div>
             <p class="eyebrow">Selected Output</p>
-            <h2>Publications.</h2>
+            <h2>Research, peer reviewed.</h2>
             <p class="section-note">
-              Click any publication to open its DOI page or a Google Scholar search. Citation badges use OpenAlex indexed counts when available.
+              Work spanning control, optimization, power and energy systems. Open any linked paper for the full record.
             </p>
           </div>
           <div class="filters" aria-label="Publication filter">
-            <button class="filter active" type="button" data-filter="all">All</button>
+            <button class="filter active" type="button" data-filter="highlight">Highlights</button>
+            <button class="filter" type="button" data-filter="all">All</button>
             <button class="filter" type="button" data-filter="journal">Journal</button>
             <button class="filter" type="button" data-filter="conference">Conference</button>
-            <button class="filter" type="button" data-filter="first-author">First author</button>
           </div>
         </div>
         <div class="paper-list" id="paper-list" aria-live="polite"></div>
@@ -205,7 +205,7 @@
         <div class="section-heading split">
           <div>
             <p class="eyebrow">Working Papers</p>
-            <h2>Current research pipeline.</h2>
+            <h2>What I am building next.</h2>
             <p class="section-note">
               I am preparing preprints and working papers targeting high-impact venues, with an emphasis on generalizable learning-based decision systems for energy management.
             </p>
@@ -223,7 +223,7 @@
       <section class="section-band skills" id="skills">
         <div class="section-heading">
           <p class="eyebrow">Skills</p>
-          <h2>Theory, code, and hardware-aware research workflow.</h2>
+          <h2>From proof to code to hardware.</h2>
         </div>
         <div class="skill-tags" aria-label="Skills and tools">
           <span>Predefined-time control</span>
@@ -245,7 +245,7 @@
       <section class="section-band projects" id="projects">
         <div class="section-heading">
           <p class="eyebrow">Projects &amp; Honors</p>
-          <h2>Research support and recognition.</h2>
+          <h2>Research support. Recognized work.</h2>
         </div>
         <div class="project-grid">
           <article>
@@ -265,13 +265,14 @@
           </article>
         </div>
         <div class="honors-list" id="honors-list" aria-label="Honors"></div>
+        <button class="honors-toggle" type="button" aria-expanded="false">View all recognition <span aria-hidden="true">↓</span></button>
       </section>
 
       <section class="section-band conference-globe-section" id="conferences">
         <div class="section-heading split">
           <div>
             <p class="eyebrow">Conference Atlas</p>
-            <h2>Academic travel, mapped as a live research orbit.</h2>
+            <h2>A research path across 14 cities.</h2>
           </div>
           <div class="globe-stats" aria-label="Conference statistics">
             <span><strong>18</strong> records</span>
@@ -301,7 +302,8 @@
       <section class="section-band contact" id="contact">
         <div>
           <p class="eyebrow">Contact</p>
-          <h2>Open to postdoctoral research collaborations in control, optimization, and energy systems.</h2>
+          <h2>Let us build energy systems that respond in time.</h2>
+          <p>Open to postdoctoral research collaborations starting Spring 2027.</p>
         </div>
         <address>
           <a href="mailto:N2505927K@e.ntu.edu.sg">N2505927K@e.ntu.edu.sg</a>
@@ -311,34 +313,11 @@
       </section>
     </main>
 
-    <aside class="customizer is-collapsed" aria-label="Homepage customization panel">
-      <button class="customizer-toggle" type="button" aria-expanded="false" aria-controls="customizer-panel">
-        <span></span>
-        <span></span>
-      </button>
-      <div class="customizer-panel" id="customizer-panel">
-        <h2>Customize</h2>
-        <label>
-          Accent
-          <input type="color" id="accent-picker" value="#2dd4bf" />
-        </label>
-        <div class="control-group">
-          <span>Theme</span>
-          <button type="button" data-set-theme="dark" class="active">Dark</button>
-          <button type="button" data-set-theme="light">Light</button>
-        </div>
-        <div class="control-group">
-          <span>Density</span>
-          <button type="button" data-set-density="balanced" class="active">Balanced</button>
-          <button type="button" data-set-density="compact">Compact</button>
-        </div>
-        <div class="control-group">
-          <span>Motion</span>
-          <button type="button" data-set-motion="on" class="active">On</button>
-          <button type="button" data-set-motion="off">Off</button>
-        </div>
-      </div>
-    </aside>
+    <footer class="site-footer">
+      <p>© 2026 Yu Zhang</p>
+      <p>Control · Optimization · Energy Systems</p>
+      <a href="#top">Back to top ↑</a>
+    </footer>
 
     <script type="application/ld+json">
       {
@@ -366,7 +345,7 @@
         ]
       }
     </script>
-    <script src="script.js?v=20260816b"></script>
+    <script src="script.js?v=20260816apple"></script>
     <script type="module" src="globe.js?v=20260816"></script>
   </body>
 </html>
