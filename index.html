@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light" data-density="balanced" data-motion="on">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
       content="Yu Zhang - Ph.D. researcher in predefined-time optimization and distributed control for hybrid AC/DC microgrid clusters."
@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://yuzhang-research.com/" />
     <title>Yu Zhang | Microgrid Control Research</title>
     <link rel="preload" href="assets/ZhangY.jpg" as="image" />
-    <link rel="stylesheet" href="styles.css?v=20260804b" />
+    <link rel="stylesheet" href="styles.css?v=20260816" />
   </head>
   <body>
     <canvas id="grid-canvas" aria-hidden="true"></canvas>
@@ -35,7 +35,18 @@
           <span>Control Science &amp; Engineering</span>
         </span>
       </a>
-      <nav class="nav" aria-label="Primary navigation">
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <nav class="nav" id="primary-navigation" aria-label="Primary navigation">
         <a href="#experience">Path</a>
         <a href="#problem">Problem</a>
         <a href="#research">Research</a>
@@ -355,7 +366,7 @@
         ]
       }
     </script>
-    <script src="script.js?v=20260804a"></script>
+    <script src="script.js?v=20260816"></script>
     <script type="module" src="globe.js?v=20260523j"></script>
   </body>
 </html>

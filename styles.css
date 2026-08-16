@@ -48,10 +48,13 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at 10% 10%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 28rem),
     linear-gradient(135deg, var(--bg), var(--bg-soft) 64%, var(--bg));
@@ -158,6 +161,42 @@ img {
 
 .nav a:hover {
   color: var(--text);
+}
+
+.nav-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  place-items: center;
+  gap: 5px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--panel-strong);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .section-band {
@@ -1024,12 +1063,54 @@ address a:hover {
 }
 
 @media (max-width: 900px) {
+  :root {
+    --section-space: 84px;
+  }
+
   .site-header {
-    align-items: flex-start;
+    align-items: center;
+    padding-top: max(12px, env(safe-area-inset-top));
+  }
+
+  .nav-toggle {
+    display: grid;
+    margin-left: auto;
   }
 
   .nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: grid;
+    max-width: none;
+    max-height: min(72vh, 560px);
+    gap: 4px;
+    padding: 12px clamp(20px, 5vw, 72px) 18px;
+    overflow-y: auto;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 96%, transparent);
+    box-shadow: 0 22px 48px rgba(7, 16, 18, 0.18);
+    backdrop-filter: blur(22px);
+  }
+
+  .nav:not(.is-open) {
     display: none;
+  }
+
+  .nav a {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    border-radius: 8px;
+    padding: 9px 12px;
+    color: var(--text);
+    font-size: 0.92rem;
+  }
+
+  .nav a:focus-visible,
+  .nav a:hover {
+    background: color-mix(in srgb, var(--accent) 12%, var(--panel));
   }
 
   .hero,
@@ -1042,6 +1123,7 @@ address a:hover {
   }
 
   .hero {
+    min-height: auto;
     padding-top: 64px;
   }
 
@@ -1071,18 +1153,45 @@ address a:hover {
     align-items: start;
   }
 
+  .paper-meta {
+    justify-content: flex-start;
+  }
+
   .globe-stage {
     min-height: 520px;
+  }
+
+  .conference-panel {
+    max-height: none;
+  }
+
+  .conference-list {
+    max-height: 520px;
   }
 }
 
 @media (max-width: 620px) {
+  :root {
+    --section-space: 68px;
+  }
+
+  .site-header {
+    padding-right: max(14px, env(safe-area-inset-right));
+    padding-left: max(14px, env(safe-area-inset-left));
+  }
+
   .section-band {
     width: min(100% - 28px, 1180px);
+    scroll-margin-top: 72px;
   }
 
   h1 {
-    font-size: clamp(2.75rem, 18vw, 4.4rem);
+    font-size: clamp(2.35rem, 13vw, 3.8rem);
+    line-height: 0.98;
+  }
+
+  h2 {
+    font-size: clamp(1.9rem, 10vw, 3rem);
   }
 
   .brand-copy span {
@@ -1098,8 +1207,66 @@ address a:hover {
     grid-template-columns: 1fr;
   }
 
+  .hero {
+    gap: 34px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    min-height: 48px;
+    text-align: center;
+  }
+
+  .metrics {
+    margin-top: 30px;
+  }
+
+  .metrics div,
+  .topic,
+  .paper,
+  .project-grid article,
+  .selected-work-panel,
+  .working-list article {
+    padding: 18px;
+  }
+
+  .topic {
+    min-height: 0;
+  }
+
+  .filters {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filter {
+    min-height: 46px;
+    padding-inline: 10px;
+  }
+
   .globe-stage {
     min-height: 320px;
+  }
+
+  .globe-static {
+    object-position: center;
+  }
+
+  .conference-panel-head {
+    padding: 20px 18px 10px;
+  }
+
+  .conference-list {
+    max-height: 460px;
+    padding: 0 12px 16px;
   }
 
   .timeline-list li {
@@ -1111,5 +1278,62 @@ address a:hover {
     position: static;
     width: 100%;
     margin-top: 12px;
+  }
+
+  address,
+  address a,
+  .paper h3,
+  .project-grid h3,
+  .selected-paper-stack p {
+    overflow-wrap: anywhere;
+  }
+
+  .contact {
+    gap: 24px;
+    padding-bottom: 104px;
+  }
+
+  .customizer {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  #grid-canvas {
+    display: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-copy strong {
+    font-size: 0.92rem;
+  }
+
+  .nav-toggle {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .button,
+  .filter,
+  .control-group button,
+  .topic,
+  .paper,
+  .conference-list li {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .button:hover,
+  .filter:hover,
+  .topic:hover,
+  .conference-list li:hover {
+    transform: none;
   }
 }

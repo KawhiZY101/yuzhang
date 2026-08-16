@@ -1,6 +1,8 @@
 const root = document.documentElement;
 const canvas = document.querySelector("#grid-canvas");
 const ctx = canvas.getContext("2d");
+const reducedVisuals = window.matchMedia("(max-width: 620px), (prefers-reduced-motion: reduce)");
+let networkFrameId = null;
 const state = {
   accent: localStorage.getItem("accent") || "#0ea5e9",
   theme: localStorage.getItem("theme") || "light",
@@ -287,6 +289,45 @@ const conferences = [
   ["2025.11", "Student Academic Annual Conference", "Wuhan"],
 ];
 
+const navToggle = document.querySelector(".nav-toggle");
+const primaryNav = document.querySelector("#primary-navigation");
+const desktopNavigation = window.matchMedia("(min-width: 901px)");
+
+function setMobileNavigation(open) {
+  if (!navToggle || !primaryNav) return;
+  primaryNav.classList.toggle("is-open", open);
+  navToggle.setAttribute("aria-expanded", String(open));
+  navToggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+}
+
+navToggle?.addEventListener("click", () => {
+  setMobileNavigation(navToggle.getAttribute("aria-expanded") !== "true");
+});
+
+primaryNav?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => setMobileNavigation(false));
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") setMobileNavigation(false);
+});
+
+document.addEventListener("click", (event) => {
+  if (!primaryNav?.classList.contains("is-open")) return;
+  if (primaryNav.contains(event.target) || navToggle?.contains(event.target)) return;
+  setMobileNavigation(false);
+});
+
+const handleDesktopNavigation = (event) => {
+  if (event.matches) setMobileNavigation(false);
+};
+
+if (typeof desktopNavigation.addEventListener === "function") {
+  desktopNavigation.addEventListener("change", handleDesktopNavigation);
+} else {
+  desktopNavigation.addListener(handleDesktopNavigation);
+}
+
 function paperId(title) {
   return title
     .toLowerCase()
@@ -477,8 +518,9 @@ function createParticles() {
 }
 
 function drawNetwork() {
+  networkFrameId = null;
   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-  if (state.motion === "off") return;
+  if (state.motion === "off" || reducedVisuals.matches) return;
 
   const color = getComputedStyle(root).getPropertyValue("--accent").trim();
   ctx.fillStyle = color;
@@ -512,7 +554,18 @@ function drawNetwork() {
     }
   }
 
-  requestAnimationFrame(drawNetwork);
+  networkFrameId = requestAnimationFrame(drawNetwork);
+}
+
+function syncNetworkAnimation() {
+  resizeCanvas();
+  if (state.motion === "off" || reducedVisuals.matches) {
+    if (networkFrameId !== null) cancelAnimationFrame(networkFrameId);
+    networkFrameId = null;
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    return;
+  }
+  if (networkFrameId === null) networkFrameId = requestAnimationFrame(drawNetwork);
 }
 
 document.querySelector("#accent-picker").addEventListener("input", (event) => {
@@ -542,7 +595,7 @@ document.querySelectorAll("[data-set-motion]").forEach((button) => {
     state.motion = button.dataset.setMotion;
     applyState();
     saveState();
-    if (state.motion === "on") requestAnimationFrame(drawNetwork);
+    syncNetworkAnimation();
   });
 });
 
@@ -584,12 +637,17 @@ document.querySelector(".customizer-toggle").addEventListener("click", () => {
   document.querySelector(".customizer-toggle").setAttribute("aria-expanded", String(expanded));
 });
 
-window.addEventListener("resize", resizeCanvas);
+window.addEventListener("resize", syncNetworkAnimation);
+
+if (typeof reducedVisuals.addEventListener === "function") {
+  reducedVisuals.addEventListener("change", syncNetworkAnimation);
+} else {
+  reducedVisuals.addListener(syncNetworkAnimation);
+}
 
 renderPublications();
 renderSelectedWork();
 renderHonors();
 renderConferences();
 applyState();
-resizeCanvas();
-requestAnimationFrame(drawNetwork);
+syncNetworkAnimation();
