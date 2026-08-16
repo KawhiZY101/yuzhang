@@ -30,7 +30,7 @@
     <meta name="twitter:image" content="https://yuzhang-research.com/assets/og-yu-zhang-2026.png" />
     <title>Yu Zhang | Microgrid Control Research</title>
     <link rel="preload" href="assets/ZhangY.jpg" as="image" />
-    <link rel="stylesheet" href="styles.css?v=20260816atlas" />
+    <link rel="stylesheet" href="styles.css?v=20260816orbit" />
   </head>
   <body>
     <header class="site-header">
@@ -285,7 +285,7 @@
         <div class="atlas-stage">
           <div class="globe-stage atlas-earth">
             <canvas id="conference-globe" aria-label="Animated globe showing attended conference locations"></canvas>
-            <img class="globe-static" src="assets/earth.jpg" alt="Static globe preview for mobile devices" />
+            <div class="globe-static" role="img" aria-label="Earth showing the global context of research travel"></div>
             <div class="globe-fallback">
               <strong>Conference map</strong>
               <span>A lightweight globe preview is shown on mobile devices.</span>
@@ -303,6 +303,15 @@
                 <button class="atlas-filter" type="button" data-atlas-filter="life">Life</button>
               </div>
             </div>
+            <button class="atlas-focus-card" id="atlas-focus-card" type="button" data-atlas-index="0" aria-label="Open featured field note">
+              <span class="atlas-focus-orbit" aria-hidden="true"><i></i></span>
+              <img id="atlas-focus-image" src="assets/atlas/thumbs/kazakhstan.jpg" alt="" />
+              <span class="atlas-focus-copy">
+                <small id="atlas-focus-meta">2026.06 · Kazakhstan</small>
+                <strong id="atlas-focus-title">Research Presentation and Academic Exchange</strong>
+                <span id="atlas-focus-kind">Academic Exchange · View story ↗</span>
+              </span>
+            </button>
             <div class="atlas-rail-wrap">
               <div class="atlas-photo-rail" id="atlas-photo-rail" aria-live="polite"></div>
               <p class="atlas-scroll-hint">Scroll to explore <span aria-hidden="true">→</span></p>
@@ -383,7 +392,7 @@
         ]
       }
     </script>
-    <script src="script.js?v=20260816atlas"></script>
-    <script type="module" src="globe.js?v=20260816atlas"></script>
+    <script src="script.js?v=20260816orbit"></script>
+    <script type="module" src="globe.js?v=20260816orbit"></script>
   </body>
 </html>

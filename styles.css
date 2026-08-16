@@ -971,23 +971,63 @@ a.paper:hover {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.08) 48%, rgba(0, 0, 0, 0.18) 100%),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, transparent 46%);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0.04) 48%, rgba(0, 0, 0, 0.14) 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.88) 0%, transparent 48%);
   pointer-events: none;
 }
 
 #conference-globe {
   position: relative;
-  z-index: 0;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
   touch-action: none;
 }
 
-.globe-static,
+.globe-static {
+  position: absolute;
+  top: 48%;
+  left: 58%;
+  z-index: 0;
+  display: block;
+  width: min(62vw, 650px);
+  max-width: 72%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: url("assets/earth.jpg") 55% center / auto 100% no-repeat;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 0 100px rgba(0, 113, 227, 0.32),
+    inset -52px -24px 92px rgba(0, 0, 0, 0.8);
+  opacity: 0.86;
+  transform: translate(-50%, -50%);
+  transition: opacity 500ms ease;
+}
+
+.globe-static::before {
+  content: "";
+  position: absolute;
+  inset: -2.4%;
+  border: 1px solid rgba(100, 210, 255, 0.2);
+  border-radius: 50%;
+  box-shadow: 0 0 46px rgba(100, 210, 255, 0.16);
+}
+
+.globe-static::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 31% 27%, rgba(255, 255, 255, 0.18), transparent 28%, rgba(0, 0, 0, 0.06) 48%, rgba(0, 0, 0, 0.72) 94%);
+}
+
+.atlas-earth.has-webgl .globe-static {
+  opacity: 0;
+}
+
 .globe-fallback {
   display: none;
 }
@@ -1005,12 +1045,7 @@ a.paper:hover {
 
 .globe-stage.is-static .globe-static {
   display: block;
-  width: min(88%, 760px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  object-fit: cover;
-  opacity: 0.9;
-  box-shadow: 0 0 120px rgba(0, 113, 227, 0.22);
+  opacity: 0.88;
 }
 
 .globe-stage.is-static .globe-fallback {
@@ -1027,7 +1062,7 @@ a.paper:hover {
   position: absolute;
   right: 22px;
   top: 22px;
-  z-index: 2;
+  z-index: 3;
   display: grid;
   width: min(400px, calc(100% - 44px));
   gap: 5px;
@@ -1051,7 +1086,7 @@ a.paper:hover {
 
 .atlas-overlay {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   display: flex;
   min-height: 800px;
   flex-direction: column;
@@ -1107,6 +1142,88 @@ a.paper:hover {
 .atlas-filter.active {
   background: #f5f5f7;
   color: #09090b;
+}
+
+.atlas-focus-card {
+  position: absolute;
+  top: 190px;
+  right: clamp(28px, 5vw, 72px);
+  z-index: 5;
+  display: grid;
+  width: min(300px, 31vw);
+  overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 0;
+  background: rgba(8, 10, 15, 0.72);
+  color: #fff;
+  text-align: left;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.46);
+  cursor: zoom-in;
+  backdrop-filter: blur(24px);
+  pointer-events: auto;
+  transition: transform 220ms ease, border-color 220ms ease;
+}
+
+.atlas-focus-card:hover,
+.atlas-focus-card:focus-visible {
+  border-color: rgba(255, 255, 255, 0.48);
+  transform: translateY(-4px);
+}
+
+.atlas-focus-card > img {
+  width: 100%;
+  aspect-ratio: 1.58;
+  border-radius: 23px 23px 0 0;
+  object-fit: cover;
+}
+
+.atlas-focus-copy {
+  display: grid;
+  gap: 7px;
+  padding: 17px 18px 19px;
+}
+
+.atlas-focus-copy small,
+.atlas-focus-copy > span {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.68rem;
+}
+
+.atlas-focus-copy strong {
+  font-size: 1rem;
+  font-weight: 620;
+  line-height: 1.2;
+  letter-spacing: -0.024em;
+}
+
+.atlas-focus-copy > span {
+  color: #64d2ff;
+}
+
+.atlas-focus-orbit {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 10px);
+  width: clamp(58px, 8vw, 112px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(100, 210, 255, 0.1), rgba(100, 210, 255, 0.78));
+  transform-origin: right center;
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+
+.atlas-focus-orbit i {
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid #64d2ff;
+  border-radius: 50%;
+  background: #07111d;
+  box-shadow: 0 0 0 7px rgba(100, 210, 255, 0.1), 0 0 26px rgba(100, 210, 255, 0.7);
+  transform: translateY(-50%);
 }
 
 .atlas-rail-wrap {
@@ -1474,6 +1591,11 @@ body.atlas-dialog-open {
     max-width: 330px;
   }
 
+  .atlas-focus-card {
+    right: 28px;
+    width: 280px;
+  }
+
   .project-grid {
     grid-template-columns: 1fr;
   }
@@ -1761,6 +1883,49 @@ body.atlas-dialog-open {
     font-size: 1.75rem;
   }
 
+  .globe-static {
+    top: 52%;
+    left: 61%;
+    width: min(118vw, 620px);
+    max-width: none;
+  }
+
+  .atlas-focus-card {
+    top: 286px;
+    right: 18px;
+    left: 18px;
+    grid-template-columns: 98px minmax(0, 1fr);
+    width: auto;
+    min-height: 108px;
+    border-radius: 20px;
+  }
+
+  .atlas-focus-card > img {
+    height: 100%;
+    aspect-ratio: auto;
+    border-radius: 19px 0 0 19px;
+  }
+
+  .atlas-focus-copy {
+    align-content: center;
+    padding: 14px 16px;
+  }
+
+  .atlas-focus-orbit {
+    right: auto;
+    left: 46px;
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(0deg, rgba(100, 210, 255, 0.08), rgba(100, 210, 255, 0.72));
+    transform: translateY(-100%);
+  }
+
+  .atlas-focus-orbit i {
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .atlas-card {
     flex-basis: 180px;
     border-radius: 20px;
@@ -1858,6 +2023,7 @@ body.atlas-dialog-open {
   .button:hover,
   .topic:hover,
   a.paper:hover,
+  .atlas-focus-card:hover,
   .atlas-card:hover,
   .selected-paper-link:hover {
     transform: none;

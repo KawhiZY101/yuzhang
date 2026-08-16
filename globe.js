@@ -43,7 +43,12 @@ if (canvas && stage) {
 
   const radius = 1.72;
 
-  const texture = new THREE.TextureLoader().load("assets/earth.jpg");
+  const texture = new THREE.TextureLoader().load(
+    "assets/earth.jpg",
+    () => stage.classList.add("has-webgl"),
+    undefined,
+    () => stage.classList.remove("has-webgl"),
+  );
   texture.colorSpace = THREE.SRGBColorSpace;
 
   const sphere = new THREE.Mesh(

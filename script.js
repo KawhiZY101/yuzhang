@@ -524,6 +524,7 @@ const atlasMoments = [
 
 let honorsExpanded = false;
 let activeAtlasFilter = "all";
+let activeAtlasMomentIndex = 0;
 
 const navToggle = document.querySelector(".nav-toggle");
 const primaryNav = document.querySelector("#primary-navigation");
@@ -710,6 +711,29 @@ function renderAtlasMoments(filter = activeAtlasFilter) {
   rail.querySelectorAll(".atlas-card:not(.is-hidden)").forEach((card) => {
     card.addEventListener("click", () => openAtlasMoment(Number(card.dataset.atlasIndex)));
   });
+
+  const visibleIndices = atlasMoments
+    .map((moment, index) => (filter === "all" || moment.kind === filter ? index : -1))
+    .filter((index) => index >= 0);
+  if (!visibleIndices.includes(activeAtlasMomentIndex)) activeAtlasMomentIndex = visibleIndices[0] ?? 0;
+  updateAtlasFocus(activeAtlasMomentIndex);
+}
+
+function updateAtlasFocus(index) {
+  const moment = atlasMoments[index];
+  const focusCard = document.querySelector("#atlas-focus-card");
+  if (!moment || !focusCard) return;
+
+  activeAtlasMomentIndex = index;
+  focusCard.dataset.atlasIndex = String(index);
+  focusCard.setAttribute("aria-label", `Open ${moment.title}, ${moment.date}, ${moment.place}`);
+
+  const image = document.querySelector("#atlas-focus-image");
+  image.src = moment.thumb;
+  image.style.objectPosition = moment.objectPosition;
+  document.querySelector("#atlas-focus-meta").textContent = `${moment.date} · ${moment.place}`;
+  document.querySelector("#atlas-focus-title").textContent = moment.title;
+  document.querySelector("#atlas-focus-kind").textContent = `${moment.kindLabel} · View story ↗`;
 }
 
 function setAtlasFilter(filter) {
@@ -731,6 +755,7 @@ function highlightAtlasMoment(index, scroll = true) {
 
   rail.querySelectorAll(".atlas-card").forEach((item) => item.classList.remove("is-active"));
   card?.classList.add("is-active");
+  updateAtlasFocus(index);
   if (scroll) card?.scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth", block: "nearest", inline: "center" });
 }
 
@@ -846,6 +871,10 @@ document.querySelectorAll(".filter").forEach((filter) => {
 
 document.querySelectorAll(".atlas-filter").forEach((filter) => {
   filter.addEventListener("click", () => setAtlasFilter(filter.dataset.atlasFilter));
+});
+
+document.querySelector("#atlas-focus-card")?.addEventListener("click", (event) => {
+  openAtlasMoment(Number(event.currentTarget.dataset.atlasIndex));
 });
 
 const atlasLightbox = document.querySelector("#atlas-lightbox");
