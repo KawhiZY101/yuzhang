@@ -18,7 +18,7 @@ const stops = [
   { date: "2024.09", name: "IEEE/CAA Journal of Automatica Sinica Conference", city: "Beijing", lat: 39.9042, lon: 116.4074 },
   { date: "2024.10", name: "National Conference on Complex Networks", city: "Nanjing", lat: 32.0603, lon: 118.7969 },
   { date: "2024.11", name: "IEEE Active Disturbance Rejection Control Workshop", city: "Zhuhai", lat: 22.2711, lon: 113.5767 },
-  { date: "2024.12", name: "International Conference on Intelligent Power Systems", city: "Yichang", lat: 30.6919, lon: 111.2865 },
+  { date: "2024.12", name: "International Conference on Intelligent Power and Systems", city: "Yichang", lat: 30.6919, lon: 111.2865 },
   { date: "2025.05", name: "Data Driven Control and Learning Systems Conference", city: "Wuxi", lat: 31.4912, lon: 120.3124 },
   { date: "2025.11", name: "Student Academic Annual Conference", city: "Wuhan", lat: 30.5928, lon: 114.3055 },
   { date: "2026.08", name: "21st IEEE Conference on Industrial Electronics and Applications (ICIEA 2026) - Best Paper Award in Energy and Environment", city: "Catania, Italy", lat: 37.5079, lon: 15.083 },
@@ -104,7 +104,7 @@ if (canvas && stage) {
       index === stops.length - 1 ? hubMaterial : pointMaterial,
     );
     marker.position.copy(point);
-    marker.userData = stop;
+    marker.userData = { ...stop, index };
     markers.push(marker);
     globe.add(marker);
 
@@ -137,6 +137,7 @@ if (canvas && stage) {
     if (hit) {
       showStop(hit.object.userData);
       pulseMarker(hit.object);
+      window.dispatchEvent(new CustomEvent("conference-marker-select", { detail: hit.object.userData.index }));
     }
   });
 

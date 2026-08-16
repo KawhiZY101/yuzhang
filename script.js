@@ -287,13 +287,243 @@ const conferences = [
   ["2024.09", "IEEE/CAA Journal of Automatica Sinica Conference", "Beijing"],
   ["2024.10", "National Conference on Complex Networks", "Nanjing"],
   ["2024.11", "IEEE Active Disturbance Rejection Control Workshop", "Zhuhai"],
-  ["2024.12", "International Conference on Intelligent Power Systems", "Yichang"],
+  ["2024.12", "International Conference on Intelligent Power and Systems", "Yichang"],
   ["2025.05", "Data Driven Control and Learning Systems Conference", "Wuxi"],
   ["2025.11", "Student Academic Annual Conference", "Wuhan"],
   ["2026.08", "21st IEEE Conference on Industrial Electronics and Applications (ICIEA 2026) - Best Paper Award in Energy and Environment", "Catania, Italy"],
 ];
 
+const atlasMoments = [
+  {
+    kind: "academic",
+    kindLabel: "Academic Exchange",
+    date: "2026.06",
+    place: "Kazakhstan",
+    title: "Research Presentation and Academic Exchange",
+    description: "Presenting ongoing work on adaptive resilient control for DC microgrids during an international academic exchange.",
+    image: "assets/atlas/kazakhstan.jpg",
+    thumb: "assets/atlas/thumbs/kazakhstan.jpg",
+    alt: "Yu Zhang presenting research on resilient DC microgrid control in Kazakhstan",
+    objectPosition: "42% center",
+  },
+  {
+    kind: "life",
+    kindLabel: "Life",
+    date: "2026.03",
+    place: "Singapore",
+    title: "A New Chapter at NTU",
+    description: "Beginning a visiting research period at Nanyang Technological University and discovering a new academic community in Singapore.",
+    image: "assets/atlas/ntu.jpg",
+    thumb: "assets/atlas/thumbs/ntu.jpg",
+    alt: "Yu Zhang outside Nanyang Technological University in Singapore",
+    objectPosition: "38% center",
+  },
+  {
+    kind: "life",
+    kindLabel: "Life",
+    date: "2025.06",
+    place: "Taiyuan, China",
+    title: "Time with Friends",
+    description: "A relaxed evening with friends between research trips and deadlines.",
+    image: "assets/atlas/taiyuan.jpg",
+    thumb: "assets/atlas/thumbs/taiyuan.jpg",
+    alt: "Yu Zhang taking a group selfie with friends in Taiyuan",
+    objectPosition: "center",
+  },
+  {
+    kind: "academic",
+    kindLabel: "Conference",
+    date: "2025.05",
+    place: "Wuxi, China",
+    title: "Data Driven Control and Learning Systems Conference",
+    description: "Attending the 14th Data Driven Control and Learning Systems Conference and exchanging ideas on learning-enabled control.",
+    image: "assets/atlas/wuxi.jpg",
+    thumb: "assets/atlas/thumbs/wuxi.jpg",
+    alt: "Yu Zhang at the 2025 Data Driven Control and Learning Systems Conference in Wuxi",
+    objectPosition: "40% center",
+    conferenceIndex: 15,
+  },
+  {
+    kind: "academic",
+    kindLabel: "Conference",
+    date: "2024.12",
+    place: "Yichang, China",
+    title: "International Conference on Intelligent Power and Systems",
+    description: "Meeting researchers at ICIPS 2024 and sharing perspectives on intelligent energy systems.",
+    image: "assets/atlas/yichang.jpg",
+    thumb: "assets/atlas/thumbs/yichang.jpg",
+    alt: "Yu Zhang with researchers at ICIPS 2024 in Yichang",
+    objectPosition: "center",
+    conferenceIndex: 14,
+  },
+  {
+    kind: "academic",
+    kindLabel: "Conference",
+    date: "2024.11",
+    place: "Zhuhai, China",
+    title: "IEEE Workshop on Active Disturbance Rejection Control",
+    description: "Attending the 16th IEEE Workshop on Active Disturbance Rejection Control in Zhuhai.",
+    image: "assets/atlas/zhuhai.jpg",
+    thumb: "assets/atlas/thumbs/zhuhai.jpg",
+    alt: "Yu Zhang at the IEEE Workshop on Active Disturbance Rejection Control in Zhuhai",
+    objectPosition: "center",
+    conferenceIndex: 13,
+  },
+  {
+    kind: "academic",
+    kindLabel: "Conference · Award",
+    date: "2024.10",
+    place: "Nanjing, China",
+    title: "National Conference on Complex Networks",
+    description: "Receiving the Best Student Paper award at the 20th National Conference on Complex Networks.",
+    image: "assets/atlas/nanjing.jpg",
+    thumb: "assets/atlas/thumbs/nanjing.jpg",
+    alt: "Yu Zhang receiving a Best Student Paper award in Nanjing",
+    objectPosition: "55% center",
+    conferenceIndex: 12,
+  },
+  {
+    kind: "academic",
+    kindLabel: "Conference",
+    date: "2024.09",
+    place: "Beijing, China",
+    title: "IEEE/CAA Journal of Automatica Sinica Conference",
+    description: "Presenting multi-objective voltage optimization research for DC microgrids in Beijing.",
+    image: "assets/atlas/beijing.jpg",
+    thumb: "assets/atlas/thumbs/beijing.jpg",
+    alt: "Yu Zhang presenting DC microgrid optimization research in Beijing",
+    objectPosition: "38% center",
+    conferenceIndex: 11,
+  },
+  {
+    kind: "academic",
+    kindLabel: "Innovation Competition",
+    date: "2024.08",
+    place: "Suzhou, China",
+    title: "Huichuan Cup Innovation Competition",
+    description: "Demonstrating a hybrid microgrid project based on predefined-time distributed optimization and control.",
+    image: "assets/atlas/suzhou.jpg",
+    thumb: "assets/atlas/thumbs/suzhou.jpg",
+    alt: "Yu Zhang demonstrating a control project at the Huichuan Cup competition in Suzhou",
+    objectPosition: "73% center",
+  },
+  {
+    kind: "academic",
+    kindLabel: "Conference",
+    date: "2024.07",
+    place: "Dalian, China",
+    title: "Asian Control Conference",
+    description: "Presenting optimal voltage scheduling research for multi-bus DC microgrids at ASCC 2024.",
+    image: "assets/atlas/dalian.jpg",
+    thumb: "assets/atlas/thumbs/dalian.jpg",
+    alt: "Yu Zhang presenting at the 2024 Asian Control Conference in Dalian",
+    objectPosition: "68% center",
+    conferenceIndex: 10,
+  },
+  {
+    kind: "life",
+    kindLabel: "Life",
+    date: "2024.06",
+    place: "Chengdu, China",
+    title: "Basketball with Friends",
+    description: "A game, a team, and an afternoon away from the lab.",
+    image: "assets/atlas/chengdu.jpg",
+    thumb: "assets/atlas/thumbs/chengdu.jpg",
+    alt: "Yu Zhang with friends after playing basketball in Chengdu",
+    objectPosition: "center",
+  },
+  {
+    kind: "life",
+    kindLabel: "Life",
+    date: "2024.05",
+    place: "Huangshi, China",
+    title: "Cycling Day",
+    description: "Finding focus and momentum on two wheels outside the city.",
+    image: "assets/atlas/huangshi.jpg",
+    thumb: "assets/atlas/thumbs/huangshi.jpg",
+    alt: "Portrait of Yu Zhang wearing cycling gear in Huangshi",
+    objectPosition: "center",
+  },
+  {
+    kind: "academic",
+    kindLabel: "Conference",
+    date: "2023.10",
+    place: "Singapore",
+    title: "Annual Conference of the IEEE Industrial Electronics Society",
+    description: "Attending IECON 2023 and connecting microgrid control research with the industrial electronics community.",
+    image: "assets/atlas/singapore.jpg",
+    thumb: "assets/atlas/thumbs/singapore.jpg",
+    alt: "Yu Zhang at IECON 2023 in Singapore",
+    objectPosition: "38% center",
+    conferenceIndex: 9,
+  },
+  {
+    kind: "academic",
+    kindLabel: "Conference",
+    date: "2023.07",
+    place: "Tianjin, China",
+    title: "Chinese Control Conference",
+    description: "Attending the 42nd Chinese Control Conference with colleagues and collaborators.",
+    image: "assets/atlas/tianjin.jpg",
+    thumb: "assets/atlas/thumbs/tianjin.jpg",
+    alt: "Yu Zhang with colleagues at the 42nd Chinese Control Conference in Tianjin",
+    objectPosition: "67% center",
+    conferenceIndex: 8,
+  },
+  {
+    kind: "life",
+    kindLabel: "Life",
+    date: "2023.05",
+    place: "Shiyan, China",
+    title: "Wudang Mountain",
+    description: "A misty visit to Wudang Mountain with mentors and friends.",
+    image: "assets/atlas/shiyan.jpg",
+    thumb: "assets/atlas/thumbs/shiyan.jpg",
+    alt: "Yu Zhang with companions at Wudang Mountain in Shiyan",
+    objectPosition: "60% center",
+  },
+  {
+    kind: "academic",
+    kindLabel: "Conference",
+    date: "2023.05",
+    place: "Chongqing, China",
+    title: "China Systems Science Conference",
+    description: "Presenting stability analysis for DC microgrids at the China Systems Science Conference.",
+    image: "assets/atlas/chongqing.jpg",
+    thumb: "assets/atlas/thumbs/chongqing.jpg",
+    alt: "Yu Zhang presenting DC microgrid research in Chongqing",
+    objectPosition: "34% center",
+    conferenceIndex: 6,
+  },
+  {
+    kind: "academic",
+    kindLabel: "Conference · Award",
+    date: "2022.08",
+    place: "Hefei, China",
+    title: "Chinese Control and Decision Conference",
+    description: "Receiving the Most Popular Academic Work Award at the 34th Chinese Control and Decision Conference.",
+    image: "assets/atlas/hefei.jpg",
+    thumb: "assets/atlas/thumbs/hefei.jpg",
+    alt: "Yu Zhang receiving an award at the Chinese Control and Decision Conference in Hefei",
+    objectPosition: "48% center",
+    conferenceIndex: 4,
+  },
+  {
+    kind: "life",
+    kindLabel: "Life",
+    date: "2022",
+    place: "China",
+    title: "City Walk, Camera in Hand",
+    description: "Looking closer at the city and keeping curiosity active beyond research.",
+    image: "assets/life-city-camera.jpg",
+    thumb: "assets/atlas/thumbs/city-walk.jpg",
+    alt: "Yu Zhang on a city walk with a camera",
+    objectPosition: "62% center",
+  },
+];
+
 let honorsExpanded = false;
+let activeAtlasFilter = "all";
 
 const navToggle = document.querySelector(".nav-toggle");
 const primaryNav = document.querySelector("#primary-navigation");
@@ -453,6 +683,85 @@ function renderHonors() {
   }
 }
 
+function renderAtlasMoments(filter = activeAtlasFilter) {
+  const rail = document.querySelector("#atlas-photo-rail");
+  if (!rail) return;
+
+  activeAtlasFilter = filter;
+  rail.innerHTML = atlasMoments
+    .map(
+      (moment, index) => `
+        <button
+          class="atlas-card${filter !== "all" && moment.kind !== filter ? " is-hidden" : ""}"
+          type="button"
+          data-atlas-index="${index}"
+          aria-label="Open ${moment.title}, ${moment.date}, ${moment.place}"
+        >
+          <img src="${moment.thumb}" alt="" loading="lazy" decoding="async" style="object-position: ${moment.objectPosition}" />
+          <span class="atlas-card-copy">
+            <small>${moment.date} · ${moment.place}</small>
+            <strong>${moment.title}</strong>
+          </span>
+        </button>
+      `,
+    )
+    .join("");
+
+  rail.querySelectorAll(".atlas-card:not(.is-hidden)").forEach((card) => {
+    card.addEventListener("click", () => openAtlasMoment(Number(card.dataset.atlasIndex)));
+  });
+}
+
+function setAtlasFilter(filter) {
+  document.querySelectorAll(".atlas-filter").forEach((button) => {
+    button.classList.toggle("active", button.dataset.atlasFilter === filter);
+  });
+  renderAtlasMoments(filter);
+}
+
+function highlightAtlasMoment(index, scroll = true) {
+  const rail = document.querySelector("#atlas-photo-rail");
+  if (!rail) return;
+
+  let card = rail.querySelector(`[data-atlas-index="${index}"]`);
+  if (!card || card.classList.contains("is-hidden")) {
+    setAtlasFilter("all");
+    card = rail.querySelector(`[data-atlas-index="${index}"]`);
+  }
+
+  rail.querySelectorAll(".atlas-card").forEach((item) => item.classList.remove("is-active"));
+  card?.classList.add("is-active");
+  if (scroll) card?.scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth", block: "nearest", inline: "center" });
+}
+
+function showAtlasMomentForConference(conferenceIndex) {
+  const momentIndex = atlasMoments.findIndex((moment) => moment.conferenceIndex === conferenceIndex);
+  if (momentIndex >= 0) highlightAtlasMoment(momentIndex);
+}
+
+function openAtlasMoment(index) {
+  const moment = atlasMoments[index];
+  const lightbox = document.querySelector("#atlas-lightbox");
+  if (!moment || !lightbox) return;
+
+  const image = document.querySelector("#atlas-lightbox-image");
+  image.src = moment.image;
+  image.alt = moment.alt;
+  document.querySelector("#atlas-lightbox-kind").textContent = moment.kindLabel;
+  document.querySelector("#atlas-lightbox-date").textContent = moment.date;
+  document.querySelector("#atlas-lightbox-place").textContent = moment.place;
+  document.querySelector("#atlas-lightbox-title").textContent = moment.title;
+  document.querySelector("#atlas-lightbox-description").textContent = moment.description;
+
+  highlightAtlasMoment(index, false);
+  if (Number.isInteger(moment.conferenceIndex)) {
+    window.dispatchEvent(new CustomEvent("conference-select", { detail: moment.conferenceIndex }));
+  }
+
+  document.body.classList.add("atlas-dialog-open");
+  lightbox.showModal();
+}
+
 function renderConferences() {
   const list = document.querySelector("#conference-list");
   if (!list) return;
@@ -462,7 +771,7 @@ function renderConferences() {
     .reverse()
     .map(
       ([date, name, place], reverseIndex) => `
-        <li data-conference-index="${conferences.length - 1 - reverseIndex}">
+        <li data-conference-index="${conferences.length - 1 - reverseIndex}" role="button" tabindex="0">
           <time>${date}</time>
           <div>
             <strong>${name}</strong>
@@ -474,14 +783,23 @@ function renderConferences() {
     .join("");
 
   list.querySelectorAll("li").forEach((item) => {
-    item.addEventListener("click", () => {
+    const selectConference = () => {
+      const conferenceIndex = Number(item.dataset.conferenceIndex);
       window.dispatchEvent(
         new CustomEvent("conference-select", {
-          detail: Number(item.dataset.conferenceIndex),
+          detail: conferenceIndex,
         }),
       );
+      showAtlasMomentForConference(conferenceIndex);
       list.querySelectorAll("li").forEach((entry) => entry.classList.remove("active"));
       item.classList.add("active");
+    };
+
+    item.addEventListener("click", selectConference);
+    item.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      selectConference();
     });
   });
 }
@@ -526,6 +844,29 @@ document.querySelectorAll(".filter").forEach((filter) => {
   });
 });
 
+document.querySelectorAll(".atlas-filter").forEach((filter) => {
+  filter.addEventListener("click", () => setAtlasFilter(filter.dataset.atlasFilter));
+});
+
+const atlasLightbox = document.querySelector("#atlas-lightbox");
+
+document.querySelector(".atlas-lightbox-close")?.addEventListener("click", () => atlasLightbox?.close());
+
+atlasLightbox?.addEventListener("click", (event) => {
+  if (event.target === atlasLightbox) atlasLightbox.close();
+});
+
+atlasLightbox?.addEventListener("close", () => {
+  document.body.classList.remove("atlas-dialog-open");
+  const image = document.querySelector("#atlas-lightbox-image");
+  image.removeAttribute("src");
+  image.alt = "";
+});
+
+window.addEventListener("conference-marker-select", (event) => {
+  showAtlasMomentForConference(Number(event.detail));
+});
+
 document.querySelector(".honors-toggle")?.addEventListener("click", () => {
   honorsExpanded = !honorsExpanded;
   renderHonors();
@@ -534,10 +875,11 @@ document.querySelector(".honors-toggle")?.addEventListener("click", () => {
 renderPublications();
 renderSelectedWork();
 renderHonors();
+renderAtlasMoments();
 renderConferences();
 
 const revealTargets = document.querySelectorAll(
-  ".section-heading, .timeline-list > li, .visual-story > *, .topic, .selected-work-panel, .working-list article, .skill-tags, .life-gallery > *, .project-grid article, .honors-list, .globe-layout, .contact > *",
+  ".section-heading, .timeline-list > li, .visual-story > *, .topic, .selected-work-panel, .working-list article, .skill-tags, .project-grid article, .honors-list, .atlas-stage, .conference-timeline, .contact > *",
 );
 
 if (reducedMotion.matches || !("IntersectionObserver" in window)) {

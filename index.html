@@ -30,7 +30,7 @@
     <meta name="twitter:image" content="https://yuzhang-research.com/assets/og-yu-zhang-2026.png" />
     <title>Yu Zhang | Microgrid Control Research</title>
     <link rel="preload" href="assets/ZhangY.jpg" as="image" />
-    <link rel="stylesheet" href="styles.css?v=20260816photos" />
+    <link rel="stylesheet" href="styles.css?v=20260816atlas" />
   </head>
   <body>
     <header class="site-header">
@@ -72,6 +72,7 @@
           <div class="hero-actions">
             <a class="button primary" href="#research">Explore research</a>
             <a class="button text-button" href="assets/Yu_Zhang_CV_2026.pdf?v=20260816" target="_blank" rel="noreferrer">Download CV <span aria-hidden="true">↗</span></a>
+            <a class="button text-button" href="https://scholar.google.com/citations?user=4Ou_lAAXGTAC&amp;hl=en&amp;oi=sra" target="_blank" rel="me noreferrer">Google Scholar <span aria-hidden="true">↗</span></a>
           </div>
           <dl class="metrics" aria-label="Research metrics">
             <div>
@@ -242,37 +243,6 @@
         </div>
       </section>
 
-      <section class="section-band life" id="beyond-the-lab">
-        <div class="section-heading">
-          <p class="eyebrow">Beyond the Lab</p>
-          <h2>Curiosity travels with me.</h2>
-          <p class="section-intro">New places, a camera in hand, and the shared moments that make the work meaningful.</p>
-        </div>
-        <div class="life-gallery" aria-label="Personal moments beyond research">
-          <figure class="life-photo life-photo-primary">
-            <img src="assets/life-city-camera.jpg" alt="Yu Zhang on a city walk with a camera" width="1800" height="1350" loading="lazy" decoding="async" />
-            <figcaption>
-              <strong>City walks, camera in hand.</strong>
-              <span>Looking closer, wherever I am.</span>
-            </figcaption>
-          </figure>
-          <figure class="life-photo life-photo-ntu">
-            <img src="assets/life-ntu-singapore.jpg" alt="Yu Zhang outside Nanyang Technological University in Singapore" width="1800" height="1350" loading="lazy" decoding="async" />
-            <figcaption>
-              <strong>A new chapter at NTU.</strong>
-              <span>Singapore</span>
-            </figcaption>
-          </figure>
-          <figure class="life-photo life-photo-award">
-            <img src="assets/life-award-event.jpg" alt="Yu Zhang at a student innovation award event" width="1800" height="1200" loading="lazy" decoding="async" />
-            <figcaption>
-              <strong>A shared moment of recognition.</strong>
-              <span>With the team</span>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
       <section class="section-band projects" id="projects">
         <div class="section-heading">
           <p class="eyebrow">Projects &amp; Honors</p>
@@ -303,32 +273,66 @@
         <div class="section-heading split">
           <div>
             <p class="eyebrow">Conference Atlas</p>
-            <h2>A research path across 14 cities.</h2>
+            <h2>Research travels. Life comes with it.</h2>
           </div>
           <div class="globe-stats" aria-label="Conference statistics">
-            <span><strong>18</strong> records</span>
-            <span><strong>14</strong> cities</span>
+            <span><strong>18</strong> conference records</span>
+            <span><strong>18</strong> field notes</span>
             <span><strong>2021-2026</strong></span>
           </div>
         </div>
-        <div class="globe-layout">
-          <div class="globe-stage">
+
+        <div class="atlas-stage">
+          <div class="globe-stage atlas-earth">
             <canvas id="conference-globe" aria-label="Animated globe showing attended conference locations"></canvas>
             <img class="globe-static" src="assets/earth.jpg" alt="Static globe preview for mobile devices" />
             <div class="globe-fallback">
               <strong>Conference map</strong>
-              <span>Interactive globe loads on larger screens; mobile devices use a lightweight static preview.</span>
+              <span>A lightweight globe preview is shown on mobile devices.</span>
             </div>
           </div>
-          <div class="conference-panel">
-            <div class="conference-panel-head">
-              <p class="eyebrow">Trajectory</p>
-              <h3>Attended conferences and academic events</h3>
+
+          <div class="atlas-overlay">
+            <div class="atlas-intro">
+              <p class="eyebrow">Field Notes</p>
+              <h3>Across conferences, collaborations, and the moments between.</h3>
+              <p>Select a photograph to see it in full, together with its date, place, and story.</p>
+              <div class="atlas-filters" role="group" aria-label="Filter photographs">
+                <button class="atlas-filter active" type="button" data-atlas-filter="all">All</button>
+                <button class="atlas-filter" type="button" data-atlas-filter="academic">Academic</button>
+                <button class="atlas-filter" type="button" data-atlas-filter="life">Life</button>
+              </div>
             </div>
-            <ol class="conference-list" id="conference-list"></ol>
+            <div class="atlas-rail-wrap">
+              <div class="atlas-photo-rail" id="atlas-photo-rail" aria-live="polite"></div>
+              <p class="atlas-scroll-hint">Scroll to explore <span aria-hidden="true">→</span></p>
+            </div>
           </div>
         </div>
+
+        <div class="conference-timeline">
+          <div class="conference-panel-head">
+            <p class="eyebrow">Complete Trajectory</p>
+            <h3>Attended conferences and academic events</h3>
+          </div>
+          <ol class="conference-list" id="conference-list"></ol>
+        </div>
       </section>
+
+      <dialog class="atlas-lightbox" id="atlas-lightbox" aria-labelledby="atlas-lightbox-title">
+        <button class="atlas-lightbox-close" type="button" aria-label="Close photograph">×</button>
+        <div class="atlas-lightbox-layout">
+          <figure class="atlas-lightbox-media">
+            <img id="atlas-lightbox-image" alt="" />
+          </figure>
+          <div class="atlas-lightbox-copy">
+            <p class="eyebrow" id="atlas-lightbox-kind"></p>
+            <p class="atlas-lightbox-meta"><time id="atlas-lightbox-date"></time><span aria-hidden="true">·</span><span id="atlas-lightbox-place"></span></p>
+            <h2 id="atlas-lightbox-title"></h2>
+            <p id="atlas-lightbox-description"></p>
+          </div>
+        </div>
+      </dialog>
 
       <section class="section-band contact" id="contact">
         <div>
@@ -368,6 +372,9 @@
           }
         ],
         "email": "mailto:N2505927K@e.ntu.edu.sg",
+        "sameAs": [
+          "https://scholar.google.com/citations?user=4Ou_lAAXGTAC&hl=en&oi=sra"
+        ],
         "knowsAbout": [
           "Predefined-time control",
           "Distributed optimization",
@@ -376,7 +383,7 @@
         ]
       }
     </script>
-    <script src="script.js?v=20260816photos"></script>
-    <script type="module" src="globe.js?v=20260816"></script>
+    <script src="script.js?v=20260816atlas"></script>
+    <script type="module" src="globe.js?v=20260816atlas"></script>
   </body>
 </html>
