@@ -133,9 +133,9 @@ if (canvas && stage) {
       canvas.width = Math.round(width * pixelRatio);
       canvas.height = Math.round(height * pixelRatio);
       context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-      centerX = width * (width < 720 ? 0.61 : 0.57);
-      centerY = height * (width < 720 ? 0.51 : 0.43);
-      radius = Math.min(width * (width < 720 ? 0.39 : 0.34), height * 0.36, 315);
+      centerX = width * (width < 720 ? 0.64 : 0.56);
+      centerY = height * (width < 720 ? 0.48 : 0.42);
+      radius = Math.min(width * (width < 720 ? 0.38 : 0.34), height * 0.38, 315);
       stars = Array.from({ length: Math.round(width / 9) }, (_, index) => ({
         x: ((index * 83) % 997) / 997 * width,
         y: ((index * 47 + 19) % 991) / 991 * height,
