@@ -537,7 +537,7 @@ renderHonors();
 renderConferences();
 
 const revealTargets = document.querySelectorAll(
-  ".section-heading, .timeline-list > li, .visual-story > *, .topic, .selected-work-panel, .working-list article, .skill-tags, .project-grid article, .honors-list, .globe-layout, .contact > *",
+  ".section-heading, .timeline-list > li, .visual-story > *, .topic, .selected-work-panel, .working-list article, .skill-tags, .life-gallery > *, .project-grid article, .honors-list, .globe-layout, .contact > *",
 );
 
 if (reducedMotion.matches || !("IntersectionObserver" in window)) {
