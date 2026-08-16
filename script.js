@@ -709,7 +709,10 @@ function renderAtlasMoments(filter = activeAtlasFilter) {
     .join("");
 
   rail.querySelectorAll(".atlas-card:not(.is-hidden)").forEach((card) => {
-    card.addEventListener("click", () => openAtlasMoment(Number(card.dataset.atlasIndex)));
+    const index = Number(card.dataset.atlasIndex);
+    card.addEventListener("pointerenter", () => highlightAtlasMoment(index, false));
+    card.addEventListener("focus", () => highlightAtlasMoment(index, false));
+    card.addEventListener("click", () => openAtlasMoment(index));
   });
 
   const visibleIndices = atlasMoments
@@ -727,6 +730,9 @@ function updateAtlasFocus(index) {
   activeAtlasMomentIndex = index;
   focusCard.dataset.atlasIndex = String(index);
   focusCard.setAttribute("aria-label", `Open ${moment.title}, ${moment.date}, ${moment.place}`);
+  focusCard.classList.remove("is-switching");
+  void focusCard.offsetWidth;
+  focusCard.classList.add("is-switching");
 
   const image = document.querySelector("#atlas-focus-image");
   image.src = moment.thumb;
@@ -734,6 +740,9 @@ function updateAtlasFocus(index) {
   document.querySelector("#atlas-focus-meta").textContent = `${moment.date} · ${moment.place}`;
   document.querySelector("#atlas-focus-title").textContent = moment.title;
   document.querySelector("#atlas-focus-kind").textContent = `${moment.kindLabel} · View story ↗`;
+
+  window.__atlasActiveMoment = { ...moment, atlasIndex: index };
+  window.dispatchEvent(new CustomEvent("atlas-moment-select", { detail: window.__atlasActiveMoment }));
 }
 
 function setAtlasFilter(filter) {

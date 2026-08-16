@@ -997,7 +997,9 @@ a.paper:hover {
   max-width: 72%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: url("assets/earth.jpg") 55% center / auto 100% no-repeat;
+  background:
+    radial-gradient(circle at 34% 28%, rgba(119, 211, 255, 0.26), transparent 24%),
+    radial-gradient(circle at 38% 34%, #275a89 0%, #123556 32%, #071827 70%, #02060b 100%);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.12),
     0 0 100px rgba(0, 113, 227, 0.32),
@@ -1010,10 +1012,14 @@ a.paper:hover {
 .globe-static::before {
   content: "";
   position: absolute;
-  inset: -2.4%;
-  border: 1px solid rgba(100, 210, 255, 0.2);
+  inset: 0;
+  border: 1px solid rgba(100, 210, 255, 0.24);
   border-radius: 50%;
-  box-shadow: 0 0 46px rgba(100, 210, 255, 0.16);
+  background:
+    repeating-radial-gradient(ellipse at center, transparent 0 31px, rgba(151, 210, 255, 0.1) 32px 33px),
+    repeating-linear-gradient(90deg, transparent 0 51px, rgba(151, 210, 255, 0.08) 52px 53px);
+  box-shadow: 0 0 46px rgba(100, 210, 255, 0.18);
+  opacity: 0.72;
 }
 
 .globe-static::after {
@@ -1024,7 +1030,7 @@ a.paper:hover {
   background: radial-gradient(circle at 31% 27%, rgba(255, 255, 255, 0.18), transparent 28%, rgba(0, 0, 0, 0.06) 48%, rgba(0, 0, 0, 0.72) 94%);
 }
 
-.atlas-earth.has-webgl .globe-static {
+.atlas-earth.has-canvas .globe-static {
   opacity: 0;
 }
 
@@ -1171,6 +1177,15 @@ a.paper:hover {
   transform: translateY(-4px);
 }
 
+.atlas-focus-card.is-switching {
+  animation: atlas-focus-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes atlas-focus-in {
+  from { opacity: 0.55; transform: translateY(10px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 .atlas-focus-card > img {
   width: 100%;
   aspect-ratio: 1.58;
@@ -1224,6 +1239,15 @@ a.paper:hover {
   background: #07111d;
   box-shadow: 0 0 0 7px rgba(100, 210, 255, 0.1), 0 0 26px rgba(100, 210, 255, 0.7);
   transform: translateY(-50%);
+}
+
+.atlas-stage.is-locating .atlas-focus-orbit i {
+  animation: atlas-location-pulse 760ms ease-out both;
+}
+
+@keyframes atlas-location-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(100, 210, 255, 0.48), 0 0 20px rgba(100, 210, 255, 0.72); }
+  100% { box-shadow: 0 0 0 18px rgba(100, 210, 255, 0), 0 0 28px rgba(100, 210, 255, 0.72); }
 }
 
 .atlas-rail-wrap {
