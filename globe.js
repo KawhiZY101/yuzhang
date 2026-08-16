@@ -21,6 +21,7 @@ const stops = [
   { date: "2024.12", name: "International Conference on Intelligent Power Systems", city: "Yichang", lat: 30.6919, lon: 111.2865 },
   { date: "2025.05", name: "Data Driven Control and Learning Systems Conference", city: "Wuxi", lat: 31.4912, lon: 120.3124 },
   { date: "2025.11", name: "Student Academic Annual Conference", city: "Wuhan", lat: 30.5928, lon: 114.3055 },
+  { date: "2026.08", name: "21st IEEE Conference on Industrial Electronics and Applications (ICIEA 2026) - Best Paper Award in Energy and Environment", city: "Catania, Italy", lat: 37.5079, lon: 15.083 },
 ];
 
 if (canvas && stage) {

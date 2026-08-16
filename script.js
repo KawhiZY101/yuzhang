@@ -140,6 +140,14 @@ const publications = [
     kind: "conference",
     role: "first-author",
     year: 2026,
+    venue: "21st IEEE Conference on Industrial Electronics and Applications (ICIEA 2026)",
+    title: "Multi-Scale Laplacian-Guided Decision Transformer for Hybrid Energy Storage Dispatch in Renewable-Rich Distribution Networks",
+    note: "Best Paper Award in Energy and Environment",
+  },
+  {
+    kind: "conference",
+    role: "first-author",
+    year: 2026,
     venue: "IEEE Power & Energy Society General Meeting, 2026",
     title: "Energy-Like Stability of Interconnected Grid-Forming Inverters with Potential-Sensitive Virtual Inertia",
     note: "Accepted",
@@ -215,6 +223,12 @@ const selectedWorks = {
 
 const honors = [
   {
+    date: "2026.08",
+    project: "21st IEEE Conference on Industrial Electronics and Applications (ICIEA 2026)",
+    award: "Best Paper Award in Energy and Environment",
+    title: "Multi-Scale Laplacian-Guided Decision Transformer for Hybrid Energy Storage Dispatch in Renewable-Rich Distribution Networks.",
+  },
+  {
     date: "2025.11",
     project: "Doctoral Study",
     award: "National Scholarship for Doctoral Students",
@@ -287,6 +301,7 @@ const conferences = [
   ["2024.12", "International Conference on Intelligent Power Systems", "Yichang"],
   ["2025.05", "Data Driven Control and Learning Systems Conference", "Wuxi"],
   ["2025.11", "Student Academic Annual Conference", "Wuhan"],
+  ["2026.08", "21st IEEE Conference on Industrial Electronics and Applications (ICIEA 2026) - Best Paper Award in Energy and Environment", "Catania, Italy"],
 ];
 
 const navToggle = document.querySelector(".nav-toggle");
