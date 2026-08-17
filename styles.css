@@ -892,6 +892,7 @@ a.paper:hover {
 .research-next-visual img {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 2.11;
   object-fit: cover;
 }
