@@ -30,7 +30,7 @@
     <meta name="twitter:image" content="https://yuzhang-research.com/assets/og-yu-zhang-2026.png" />
     <title>Yu Zhang | Microgrid Control Research</title>
     <link rel="preload" href="assets/ZhangY.jpg" as="image" />
-    <link rel="stylesheet" href="styles.css?v=20260817research2" />
+    <link rel="stylesheet" href="styles.css?v=20260817motion" />
   </head>
   <body>
     <header class="site-header">
@@ -140,6 +140,17 @@
         <div class="image-strip">
           <img src="assets/MicrogridCluster.jpg" alt="Renewable-rich microgrid cluster" loading="lazy" />
         </div>
+        <div class="problem-motion" aria-hidden="true">
+          <span class="problem-link" style="--x: 18%; --y: 47%; --length: 46%; --angle: -30deg; --delay: 0s;"></span>
+          <span class="problem-link" style="--x: 57%; --y: 25%; --length: 29%; --angle: 86deg; --delay: 0.7s;"></span>
+          <span class="problem-link" style="--x: 59%; --y: 53%; --length: 39%; --angle: 136deg; --delay: 1.4s;"></span>
+          <span class="problem-link" style="--x: 59%; --y: 53%; --length: 28%; --angle: 39deg; --delay: 2.1s;"></span>
+          <span class="problem-node" style="--x: 18%; --y: 47%; --delay: 0s;"></span>
+          <span class="problem-node" style="--x: 57%; --y: 25%; --delay: 0.7s;"></span>
+          <span class="problem-node" style="--x: 59%; --y: 53%; --delay: 1.4s;"></span>
+          <span class="problem-node" style="--x: 31%; --y: 80%; --delay: 2.1s;"></span>
+          <span class="problem-node" style="--x: 80%; --y: 70%; --delay: 2.8s;"></span>
+        </div>
         <div class="story-copy">
           <p class="eyebrow">Problem Space</p>
           <h2>Energy systems are becoming distributed. Their control must become smarter.</h2>
@@ -217,15 +228,25 @@
         </div>
         <div class="working-list">
           <article>
-            <figure class="research-next-visual">
+            <figure class="research-next-visual" data-active-stage="0">
               <img
                 src="assets/research/physics-informed-rl-renewable-system.jpg"
                 alt="A renewable-rich heterogeneous power network flows through physical mechanism discovery into reinforcement-learning control of a battery and supercapacitor hybrid energy storage system"
                 loading="lazy"
                 decoding="async"
               />
-              <figcaption class="research-visual-key" aria-hidden="true">
-                <span>Physics</span><i>→</i><span>Discovery</span><i>→</i><span>Control</span>
+              <span class="research-stage-glow" aria-hidden="true"></span>
+              <figcaption class="research-visual-learning">
+                <div class="research-visual-explainer" aria-live="polite">
+                  <small id="research-stage-label">01 · Model</small>
+                  <strong id="research-stage-title">Heterogeneous network physics</strong>
+                  <span id="research-stage-detail">Model renewable-rich grid dynamics with an inertial Kuramoto network.</span>
+                </div>
+                <div class="research-visual-tabs" role="group" aria-label="Explore the research workflow">
+                  <button type="button" class="active" data-research-stage="0" aria-pressed="true">Physics</button>
+                  <button type="button" data-research-stage="1" aria-pressed="false">Discovery</button>
+                  <button type="button" data-research-stage="2" aria-pressed="false">Control</button>
+                </div>
               </figcaption>
             </figure>
             <div class="research-next-content">
@@ -233,17 +254,17 @@
               <h3>Physics-informed reinforcement learning for renewable-rich power systems</h3>
               <p class="research-next-lede">Combining interpretable grid dynamics with data-driven decision-making to improve stability, efficiency, and control performance.</p>
               <ol class="research-steps">
-                <li>
+                <li data-research-step="0" class="is-linked-active">
                   <small>01 · Model</small>
                   <strong>Build the physics layer</strong>
                   <span>Develop an inertial Kuramoto model for a heterogeneous, renewable-rich power network.</span>
                 </li>
-                <li>
+                <li data-research-step="1">
                   <small>02 · Discover</small>
                   <strong>Reveal the mechanism</strong>
                   <span>Identify synchronization, stability, and energy-flow mechanisms that govern system performance.</span>
                 </li>
-                <li>
+                <li data-research-step="2">
                   <small>03 · Control</small>
                   <strong>Learn better decisions</strong>
                   <span>Construct a physics-informed reinforcement learning policy for coordinated hybrid energy storage.</span>
@@ -425,7 +446,7 @@
         ]
       }
     </script>
-    <script src="script.js?v=20260817citations"></script>
+    <script src="script.js?v=20260817motion"></script>
     <script src="globe.js?v=20260817research"></script>
   </body>
 </html>

@@ -530,6 +530,78 @@ const navToggle = document.querySelector(".nav-toggle");
 const primaryNav = document.querySelector("#primary-navigation");
 const desktopNavigation = window.matchMedia("(min-width: 901px)");
 
+const researchStageContent = [
+  {
+    label: "01 · Model",
+    title: "Heterogeneous network physics",
+    detail: "Model renewable-rich grid dynamics with an inertial Kuramoto network.",
+  },
+  {
+    label: "02 · Discover",
+    title: "Interpretable physical mechanisms",
+    detail: "Reveal synchronization, stability, and energy-flow mechanisms behind performance.",
+  },
+  {
+    label: "03 · Control",
+    title: "Physics-informed storage decisions",
+    detail: "Coordinate battery and supercapacitor actions with reinforcement learning.",
+  },
+];
+
+const researchVisual = document.querySelector(".research-next-visual");
+const researchStageButtons = [...document.querySelectorAll("[data-research-stage]")];
+const researchStepCards = [...document.querySelectorAll("[data-research-step]")];
+const researchStageLabel = document.querySelector("#research-stage-label");
+const researchStageTitle = document.querySelector("#research-stage-title");
+const researchStageDetail = document.querySelector("#research-stage-detail");
+
+function setResearchStage(index, moveFocus = false) {
+  const normalizedIndex = (index + researchStageContent.length) % researchStageContent.length;
+  const stage = researchStageContent[normalizedIndex];
+  if (!researchVisual || !stage) return;
+
+  researchVisual.dataset.activeStage = String(normalizedIndex);
+  if (researchStageLabel) researchStageLabel.textContent = stage.label;
+  if (researchStageTitle) researchStageTitle.textContent = stage.title;
+  if (researchStageDetail) researchStageDetail.textContent = stage.detail;
+
+  researchStageButtons.forEach((button, buttonIndex) => {
+    const active = buttonIndex === normalizedIndex;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+    if (active && moveFocus) button.focus();
+  });
+
+  researchStepCards.forEach((card, cardIndex) => {
+    card.classList.toggle("is-linked-active", cardIndex === normalizedIndex);
+  });
+}
+
+researchStageButtons.forEach((button, index) => {
+  button.addEventListener("click", () => setResearchStage(index));
+  button.addEventListener("pointerenter", () => setResearchStage(index));
+  button.addEventListener("focus", () => setResearchStage(index));
+  button.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+    event.preventDefault();
+    setResearchStage(index + (event.key === "ArrowRight" ? 1 : -1), true);
+  });
+});
+
+const problemSpace = document.querySelector("#problem");
+
+if (problemSpace) {
+  if (reducedMotion.matches || !("IntersectionObserver" in window)) {
+    problemSpace.classList.add("is-animated");
+  } else {
+    const problemObserver = new IntersectionObserver(
+      ([entry]) => problemSpace.classList.toggle("is-animated", entry.isIntersecting),
+      { threshold: 0.18 },
+    );
+    problemObserver.observe(problemSpace);
+  }
+}
+
 function setMobileNavigation(open) {
   if (!navToggle || !primaryNav) return;
   primaryNav.classList.toggle("is-open", open);
