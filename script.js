@@ -48,6 +48,7 @@ const publications = [
     venue: "IEEE/CAA Journal of Automatica Sinica, 2025",
     title: "Distributed Load-sharing and Loss Optimization within Voltage Safety Constraints for Meshed DC Microgrid",
     link: "https://doi.org/10.1109/JAS.2025.125345",
+    citations: { webOfScience: 0, googleScholar: 0 },
   },
   {
     kind: "journal",
@@ -76,6 +77,7 @@ const publications = [
     venue: "IEEE Transactions on Industrial Electronics, 2025",
     title: "Distributed Power Sharing Control for Islanded AC Microgrids With Quantized State",
     link: "https://doi.org/10.1109/TIE.2025.3579083",
+    citations: { webOfScience: 2, googleScholar: 3 },
   },
   {
     kind: "journal",
@@ -84,6 +86,7 @@ const publications = [
     venue: "IEEE Transactions on Smart Grid, 2026",
     title: "FT-ESO Based Fixed-Time Secondary Control for DC Microgrids with Unknown External Disturbances",
     link: "https://ieeexplore.ieee.org/document/11534902/",
+    citations: { webOfScience: 0, googleScholar: 0 },
   },
   {
     kind: "conference",
@@ -92,6 +95,7 @@ const publications = [
     venue: "49th Annual Conference of the IEEE Industrial Electronics Society, 2023",
     title: "Distributed Predefined-Time Secondary Control for AC Microgrid",
     link: "https://scholar.google.com/scholar?q=Distributed+Predefined-Time+Secondary+Control+for+AC+Microgrid",
+    citations: { webOfScience: 0, googleScholar: 0 },
   },
   {
     kind: "conference",
@@ -100,6 +104,7 @@ const publications = [
     venue: "14th Asian Control Conference, 2024",
     title: "Optimal Voltage Scheduling under Safety Constraints for Multi-bus DC Microgrid",
     link: "https://scholar.google.com/scholar?q=Optimal+Voltage+Scheduling+under+Safety+Constraints+for+Multi-bus+DC+Microgrid",
+    citations: { webOfScience: 0, googleScholar: 2 },
   },
   {
     kind: "conference",
@@ -108,6 +113,7 @@ const publications = [
     venue: "IEEE Asia-Pacific Power and Energy Engineering Conference, 2024",
     title: "Distributed Event-Triggered Coordinated Voltage-Constrained and Current-Sharing Control for Islanded DC Microgrids",
     link: "https://doi.org/10.1109/APPEEC61255.2024.10922379",
+    citations: { webOfScience: 0, googleScholar: 0 },
   },
   {
     kind: "conference",
@@ -116,6 +122,7 @@ const publications = [
     venue: "Chinese Control Conference, 2022",
     title: "Slow State Based Consensus for Two Time-Scale Agent Networks under Directed Graphs",
     link: "https://scholar.google.com/scholar?q=Slow+State+Based+Consensus+for+Two+Time-Scale+Agent+Networks+under+Directed+Graphs",
+    citations: { webOfScience: 0, googleScholar: 0 },
   },
   {
     kind: "conference",
@@ -124,6 +131,7 @@ const publications = [
     venue: "Youth Academic Annual Conference of Chinese Association of Automation, 2025",
     title: "Distributed Event-Triggered Control for Hybrid AC/DC Microgrids with Quantized State",
     link: "https://scholar.google.com/scholar?q=Distributed+Event-Triggered+Control+for+Hybrid+AC%2FDC+Microgrids+with+Quantized+State",
+    citations: { webOfScience: 0, googleScholar: 1 },
   },
   {
     kind: "conference",
@@ -132,6 +140,7 @@ const publications = [
     venue: "21st IEEE Conference on Industrial Electronics and Applications (ICIEA 2026)",
     title: "Multi-Scale Laplacian-Guided Decision Transformer for Hybrid Energy Storage Dispatch in Renewable-Rich Distribution Networks",
     note: "Best Paper Award in Energy and Environment",
+    citations: { webOfScience: 0, googleScholar: 0 },
   },
   {
     kind: "conference",
@@ -140,6 +149,7 @@ const publications = [
     venue: "IEEE Power & Energy Society General Meeting, 2026",
     title: "Energy-Like Stability of Interconnected Grid-Forming Inverters with Potential-Sensitive Virtual Inertia",
     note: "Accepted",
+    citations: { webOfScience: 0, googleScholar: 0 },
   },
 ];
 
