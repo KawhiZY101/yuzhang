@@ -9,7 +9,7 @@ const publications = [
     title: "Predefined-Time Secondary Control for DC Microgrid",
     selected: true,
     link: "https://doi.org/10.1109/TIE.2021.3128899",
-    citations: 49,
+    citations: { webOfScience: 47, googleScholar: 61 },
   },
   {
     kind: "journal",
@@ -19,7 +19,7 @@ const publications = [
     title: "Distributed Predefined-Time Control for Hybrid AC/DC Microgrid",
     selected: true,
     link: "https://doi.org/10.1109/TIE.2022.3225807",
-    citations: 17,
+    citations: { webOfScience: 21, googleScholar: 22 },
   },
   {
     kind: "journal",
@@ -29,7 +29,7 @@ const publications = [
     title: "Distributed Predefined-Time Optimization and Control for Multi-Bus DC Microgrid",
     selected: true,
     link: "https://doi.org/10.1109/TPWRS.2023.3349165",
-    citations: 57,
+    citations: { webOfScience: 62, googleScholar: 79 },
   },
   {
     kind: "journal",
@@ -39,7 +39,7 @@ const publications = [
     title: "Distributed Predefined-Time Optimal Economic Dispatch for Microgrids",
     selected: true,
     link: "https://doi.org/10.1016/j.automatica.2024.111870",
-    citations: 15,
+    citations: { webOfScience: 16, googleScholar: 18 },
   },
   {
     kind: "journal",
@@ -57,6 +57,7 @@ const publications = [
     title: "Optimal Phase Angle Control for Interconnected AC Microgrids",
     selected: true,
     link: "https://doi.org/10.1016/j.automatica.2025.112654",
+    citations: { webOfScience: 1, googleScholar: 2 },
   },
   {
     kind: "journal",
@@ -66,7 +67,7 @@ const publications = [
     title: "From Single to Networked: Practical Predefined-Time Resilient Control of DC Microgrids under DoS and FDI Attacks",
     selected: true,
     link: "https://doi.org/10.1109/TIA.2025.3619026",
-    citations: 2,
+    citations: { webOfScience: 3, googleScholar: 5 },
   },
   {
     kind: "journal",
@@ -75,7 +76,6 @@ const publications = [
     venue: "IEEE Transactions on Industrial Electronics, 2025",
     title: "Distributed Power Sharing Control for Islanded AC Microgrids With Quantized State",
     link: "https://doi.org/10.1109/TIE.2025.3579083",
-    citations: 1,
   },
   {
     kind: "journal",
@@ -602,7 +602,7 @@ function renderPublications(activeFilter = "highlight") {
             <em>${paper.kind === "journal" ? "Journal" : "Conference"}</em>
             <em>${paper.role === "first-author" ? "First author" : paper.role === "corresponding-author" ? "Corresponding author" : "Co-author"}</em>
             ${paper.note && !paper.note.match(/^[JC]\\d+/) && paper.note !== "Completed" ? `<em>${paper.note}</em>` : ""}
-            ${typeof paper.citations === "number" ? `<em>${paper.citations} OpenAlex citations</em>` : ""}
+            ${paper.citations ? `<em class="citation-badge citation-wos" title="Web of Science Core Collection citations">WoS ${paper.citations.webOfScience}</em><em class="citation-badge citation-google" title="Google Scholar citations">Google Scholar ${paper.citations.googleScholar}</em>` : ""}
           </div>
         </${tag}>
       `;
