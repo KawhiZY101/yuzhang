@@ -885,6 +885,10 @@ a.paper:hover {
   pointer-events: none;
 }
 
+.research-motion-picture {
+  display: block;
+}
+
 .research-next-visual img {
   display: block;
   width: 100%;
